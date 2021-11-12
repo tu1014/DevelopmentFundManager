@@ -12,7 +12,7 @@ Student::Student(
 
 {
 	department = _department;
-	stdNumber = _stdNumber;
+	studentNumber = _stdNumber;
 }
 
 Student::~Student() {}
@@ -20,10 +20,10 @@ Student::~Student() {}
 void Student::print() {
 
 	cout << "[ 학생 ] " << getName() << "(학번:"
-		<< stdNumber << ", 학과:"
-		<< department << ") "
-		<< getPhoneNumber() << " " << getFundAmount()
-		<< endl;
+		 << studentNumber << ", 학과:"
+		 << department << ") "
+		 << getPhoneNumber() << " " << getFundAmount()
+		 << endl;
 
 }
 
