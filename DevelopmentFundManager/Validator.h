@@ -11,5 +11,9 @@ public:
 	bool static isValidFundAmount(int amount);
 
 
+private:
+
+	bool static isDigit(char c);
+
 };
 
