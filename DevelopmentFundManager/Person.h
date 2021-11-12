@@ -7,7 +7,7 @@ class Person
 
 public:
 
-	Person();
+	Person(string name, string phoneNumber, int fundAmount);
 	~Person();
 
 
