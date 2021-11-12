@@ -16,7 +16,7 @@ OrdinaryPerson::OrdinaryPerson(
 
 }
 
-void OrdinaryPerson::print() {
+void OrdinaryPerson::print() const {
 
 	cout << "[ 일반 ] " << getName() << "(기탁자코드:" 
 		 << depositorCode << ") "
@@ -25,7 +25,7 @@ void OrdinaryPerson::print() {
 
 }
 
-void OrdinaryPerson::read() {
+void OrdinaryPerson::read() const {
 
 
 

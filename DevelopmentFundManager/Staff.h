@@ -16,8 +16,8 @@ public:
 		string extentsionNum
 	);
 
-	void print();
-	void read();
+	void print() const;
+	void read() const;
 
 private:
 

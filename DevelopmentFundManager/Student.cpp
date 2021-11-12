@@ -17,7 +17,7 @@ Student::Student(
 
 Student::~Student() {}
 
-void Student::print() {
+void Student::print() const {
 
 	cout << "[ 학생 ] " << getName() << "(학번:"
 		 << studentNumber << ", 학과:"
@@ -27,7 +27,7 @@ void Student::print() {
 
 }
 
-void Student::read() {
+void Student::read() const {
 
 	// 파일 입출력 공부 후 작성
 

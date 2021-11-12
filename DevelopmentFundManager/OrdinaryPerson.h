@@ -6,6 +6,17 @@ class OrdinaryPerson : public Person
 {
 public:
 
+	OrdinaryPerson(
+		string name,
+		string phoneNumber,
+		int fundAmount
+	);
+
+	void print() const;
+	void read() const;
+
+	// set lastCode
+	// get lastCode ÇÊ¿ä
 
 
 private:

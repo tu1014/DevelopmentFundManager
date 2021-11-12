@@ -16,8 +16,8 @@ public:
 	const int getFundAmount() const;
 
 	// friend 함수는 가상 함수로 선언 불가 >> 멤버 함수로 사용하자
-	virtual void read() = 0;
-	virtual void print() = 0;
+	virtual void read() const = 0;
+	virtual void print() const = 0;
 
 
 private:

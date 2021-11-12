@@ -18,7 +18,7 @@ Staff::Staff(
 	extensionNumber = _extensionNumber;
 }
 
-void Staff::print() {
+void Staff::print() const {
 
 	cout << "[교직원] " << getName() << "(사번:"
 		 << staffNumber << ", 부서:"
@@ -29,7 +29,7 @@ void Staff::print() {
 	 
 }
 
-void Staff::read() {
+void Staff::read() const {
 
 
 
