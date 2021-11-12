@@ -1,5 +1,5 @@
 #pragma once
-#include "string"
+#include <string>
 #include "Person.h"
 
 class Student : public Person
@@ -15,6 +15,9 @@ public:
 		string stdNumber
 	);
 	~Student();
+
+	void print();
+	void read();
 
 private:
 

@@ -16,3 +16,16 @@ Person::Person(string _name, string _phoneNumber, int _fundAmount) {
 	fundAmount = _fundAmount;
 
 }
+
+bool Person::addFundAmount(int amount) {
+
+	if (amount < 0) return false;
+
+	fundAmount += amount;
+	return true;
+
+}
+
+const string Person::getName() const { return name; }
+const string Person::getPhoneNumber() const  { return phoneNumber; }
+const int Person::getFundAmount() const { return fundAmount; }
