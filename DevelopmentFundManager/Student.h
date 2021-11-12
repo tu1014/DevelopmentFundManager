@@ -22,7 +22,7 @@ public:
 private:
 
 	string department;
-	string stdNumber;
+	string studentNumber;
 
 
 };
