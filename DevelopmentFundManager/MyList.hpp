@@ -11,7 +11,7 @@ Node<T, V, K>::Node() {
 
 	// circular dummy head constructor
 	cout << "더미 헤드 생성자 호출" << endl;
-	ptr_item = null;
+	ptr_item = NULL;
 	ptr_prev = this;
 	ptr_next = this;
 
@@ -19,11 +19,11 @@ Node<T, V, K>::Node() {
 
 template< template <typename, typename> class T,
 	typename V, typename K>
-Node<T, V, K>::Node(T<V, K> element) {
+Node<T, V, K>::Node(T<V, K>& element) {
 
-	ptr_item = element&;
-	ptr_prev = null;
-	ptr_next = null;
+	ptr_item = element;
+	ptr_prev = NULL;
+	ptr_next = NULL;
 
 }
 
@@ -98,8 +98,8 @@ template< template <typename, typename> class T,
 bool MyList<T, V, K>::insert(T<V, K> item) {
 
 	// 이 포인터가 가리키는 노드의 next에 insert한다
-	Node<T, V, K>* insertPointer = dummyHead&;
-	Node<T, V, K>* searchPointer = dummyHead&;
+	Node<T, V, K>* insertPointer = dummyHead;
+	Node<T, V, K>* searchPointer = dummyHead;
 
 	// 중복 체크, insert 위치 지정
 	for (int i = 0; i < size; i++) {
@@ -141,9 +141,9 @@ template< template <typename, typename> class T,
 	typename V, typename K>
 void MyList<T, V, K>::print() const {
 
-	Node<T, V, K>* tmp = dummyHead&;
+	Node<T, V, K>* tmp = &dummyHead;
 
-	for (int i = 0; i < size; i++ {
+	for (int i = 0; i < size; i++) {
 
 		tmp = (*tmp).getNext();
 		T<V, K>* item = (*tmp).getItem();

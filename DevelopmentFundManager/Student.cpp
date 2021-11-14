@@ -9,7 +9,7 @@ Student<V, K>::Student(
 	string _department,
 	K _stdNumber
 
-) : Person(name, phoneNumber, fundAmount)
+) : Person<V, K>(name, phoneNumber, fundAmount)
 
 {
 	department = _department;
@@ -22,10 +22,10 @@ Student<V, K>::~Student() {}
 template<typename V, typename K>
 void Student<V, K>::print() const {
 
-	cout << "[ 학생 ] " << getName() << "(학번:"
+	cout << "[ 학생 ] " << Person<V, K>::getName() << "(학번:"
 		 << studentNumber << ", 학과:"
 		 << department << ") "
-		 << getPhoneNumber() << " " << getFundAmount()
+		 << Person<V, K>::getPhoneNumber() << " " << Person<V, K>::getFundAmount()
 		 << endl;
 
 }

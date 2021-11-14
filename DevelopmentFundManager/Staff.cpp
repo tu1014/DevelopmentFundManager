@@ -11,7 +11,7 @@ Staff<V, K>::Staff(
 	K _staffNumber,
 	string _extensionNumber
 
-) : Person(name, phoneNumber, fundAmount)
+) : Person<V, K>(name, phoneNumber, fundAmount)
 
 {
 	department = _department;
@@ -22,11 +22,11 @@ Staff<V, K>::Staff(
 template<typename V, typename K>
 void Staff<V, K>::print() const {
 
-	cout << "[교직원] " << getName() << "(사번:"
+	cout << "[교직원] " << Person<V, K>::getName() << "(사번:"
 		 << staffNumber << ", 부서:"
 		 << department << "(x"
 		 << extensionNumber << ")) "
-		 << getPhoneNumber() << " " << getFundAmount()
+		 << Person<V, K>::getPhoneNumber() << " " << Person<V, K>::getFundAmount()
 		 << endl;
 	 
 }

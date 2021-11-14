@@ -7,7 +7,7 @@ OrdinaryPerson<V, K>::OrdinaryPerson(
 	K phoneNumber,
 	V fundAmount
 
-) : Person(name, phoneNumber, fundAmount)
+) : Person<V, K>(name, phoneNumber, fundAmount)
 
 {
 
@@ -20,9 +20,9 @@ OrdinaryPerson<V, K>::OrdinaryPerson(
 template<typename V, typename K>
 void OrdinaryPerson<V, K>::print() const {
 
-	cout << "[ 일반 ] " << getName() << "(기탁자코드:" 
+	cout << "[ 일반 ] " << Person<V, K>::getName() << "(기탁자코드:" 
 		 << depositorCode << ") "
-		 << getPhoneNumber() << " " << getFundAmount()
+		 << Person<V, K>::getPhoneNumber() << " " << Person<V, K>::getFundAmount()
 		 << endl;
 
 }

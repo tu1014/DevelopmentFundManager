@@ -3,7 +3,7 @@
 #include "Person.h"
 
 template<typename V, typename K>
-class OrdinaryPerson : public Person
+class OrdinaryPerson : public Person<V, K>
 {
 public:
 
