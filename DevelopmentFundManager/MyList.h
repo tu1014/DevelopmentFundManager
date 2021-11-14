@@ -27,7 +27,7 @@ class Node {
 
 public:
 
-	Node(T element);
+	Node(T& item);
 	Node();
 	~Node();
 
@@ -39,10 +39,10 @@ public:
 
 private:
 
-	T* ptr_element;
+	T* ptr_item;
 
-	Node* prev;
-	Node* next;
+	Node* ptr_prev;
+	Node* ptr_next;
 
 	// 굳이 선언해야 할까?
 	friend class MyList;

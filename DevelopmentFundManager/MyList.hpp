@@ -6,18 +6,18 @@ template<typename T>
 Node<T>::Node() {
 
 	// circular dummy head constructor
-	ptr_element = null;
-	prev = this;
-	next = this;
+	ptr_item = null;
+	ptr_prev = this;
+	ptr_next = this;
 
 }
 
 template<typename T>
-Node<T>::Node(T element) {
+Node<T>::Node(T& element) {
 
-	ptr_element = element&;
-	prev = null;
-	next = null;
+	ptr_item = element;
+	ptr_prev = null;
+	ptr_next = null;
 
 }
 
@@ -25,7 +25,7 @@ template<typename T>
 Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
-	delete ptr_element;
+	delete ptr_item;
 	// prev, next도 지워야 할까?
 	// 아닌거같은데
 	// delete prev;
@@ -34,29 +34,31 @@ Node<T>::~Node() {
 }
 
 template<typename T>
-const Node<T>& Node<T>::getNext() const { return next; }
+const Node<T>& Node<T>::getNext() const { return ptr_next; }
 
 template<typename T>
-const Node<T>& Node<T>::getPrev() const { return prev; }
+const Node<T>& Node<T>::getPrev() const { return ptr_prev; }
 
 template<typename T>
 void Node<T>::setNext(Node& nextNode) {
 
 	nextNode.setPrev(this);
-	nextNode.setNext(next);
-	next = nextNode;
+	nextNode.setNext(ptr_next);
+	ptr_next = nextNode;
 
 }
 
 template<typename T>
 void Node<T>::setPrev(Node& prevNode) {
 
-	prevNode.setPrev(prev);
+	prevNode.setPrev(ptr_prev);
 	prevNode.setNext(this);
-	prev = prevNode;
+	ptr_prev = prevNode;
 
 }
 
+
+////////////////////////////////////////////////////////////
 
 template<typename T>
 MyList<T>::MyList() {
