@@ -2,6 +2,7 @@
 #include <string>
 #include "Person.h"
 
+template<typename V, typename K>
 class Staff : public Person
 {
 
@@ -9,10 +10,10 @@ public:
 
 	Staff(
 		string name,
-		string phoneNumber,
-		int fundAmount,
+		K phoneNumber,
+		V fundAmount,
 		string department,
-		string staffNum,
+		K staffNum,
 		string extentsionNum
 	);
 
@@ -22,7 +23,7 @@ public:
 private:
 
 	string department;
-	string staffNumber;
+	K staffNumber;
 	string extensionNumber;
 
 

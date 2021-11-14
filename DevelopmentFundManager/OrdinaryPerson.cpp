@@ -1,10 +1,11 @@
 #include "OrdinaryPerson.h"
 #include <iostream>
 
-OrdinaryPerson::OrdinaryPerson(
+template<typename V, typename K>
+OrdinaryPerson<V, K>::OrdinaryPerson(
 	string name,
-	string phoneNumber,
-	int fundAmount
+	K phoneNumber,
+	V fundAmount
 
 ) : Person(name, phoneNumber, fundAmount)
 
@@ -16,7 +17,8 @@ OrdinaryPerson::OrdinaryPerson(
 
 }
 
-void OrdinaryPerson::print() const {
+template<typename V, typename K>
+void OrdinaryPerson<V, K>::print() const {
 
 	cout << "[ 일반 ] " << getName() << "(기탁자코드:" 
 		 << depositorCode << ") "
@@ -25,7 +27,8 @@ void OrdinaryPerson::print() const {
 
 }
 
-void OrdinaryPerson::read() const {
+template<typename V, typename K>
+void OrdinaryPerson<V, K>::read() const {
 
 
 

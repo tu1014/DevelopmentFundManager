@@ -2,12 +2,13 @@
 #include <iostream>
 using namespace std;
 
-Staff::Staff(
+template<typename V, typename K>
+Staff<V, K>::Staff(
 	string name,
-	string phoneNumber,
-	int fundAmount,
+	K phoneNumber,
+	V fundAmount,
 	string _department,
-	string _staffNumber,
+	K _staffNumber,
 	string _extensionNumber
 
 ) : Person(name, phoneNumber, fundAmount)
@@ -18,7 +19,8 @@ Staff::Staff(
 	extensionNumber = _extensionNumber;
 }
 
-void Staff::print() const {
+template<typename V, typename K>
+void Staff<V, K>::print() const {
 
 	cout << "[교직원] " << getName() << "(사번:"
 		 << staffNumber << ", 부서:"
@@ -29,7 +31,8 @@ void Staff::print() const {
 	 
 }
 
-void Staff::read() const {
+template<typename V, typename K>
+void Staff<V, K>::read() const {
 
 
 

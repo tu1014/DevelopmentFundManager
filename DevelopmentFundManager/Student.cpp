@@ -1,12 +1,13 @@
 #include "Student.h"
 #include <iostream>
 
-Student::Student(
+template<typename V, typename K>
+Student<V, K>::Student(
 	string name,
-	string phoneNumber,
-	int fundAmount,
+	K phoneNumber,
+	V fundAmount,
 	string _department,
-	string _stdNumber
+	K _stdNumber
 
 ) : Person(name, phoneNumber, fundAmount)
 
@@ -15,9 +16,11 @@ Student::Student(
 	studentNumber = _stdNumber;
 }
 
-Student::~Student() {}
+template<typename V, typename K>
+Student<V, K>::~Student() {}
 
-void Student::print() const {
+template<typename V, typename K>
+void Student<V, K>::print() const {
 
 	cout << "[ 학생 ] " << getName() << "(학번:"
 		 << studentNumber << ", 학과:"
@@ -27,7 +30,8 @@ void Student::print() const {
 
 }
 
-void Student::read() const {
+template<typename V, typename K>
+void Student<V, K>::read() const {
 
 	// 파일 입출력 공부 후 작성
 
