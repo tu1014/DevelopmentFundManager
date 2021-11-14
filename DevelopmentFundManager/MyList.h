@@ -12,6 +12,8 @@ public:
 	~MyList();
 
 	bool insert(T<V, K> item);
+	void addFirst(T<V, K> item); // test¿ë
+	void print() const;
 
 
 private:

@@ -104,12 +104,12 @@ bool MyList<T, V, K>::insert(T<V, K> item) {
 	// 중복 체크, insert 위치 지정
 	for (int i = 0; i < size; i++) {
 
-		searchPointer = searchPointer.getNext();
+		searchPointer = (*searchPointer).getNext();
 
-		T<V, K> nodeItem = searchPointer.getItem();
+		T<V, K> nodeItem = (*searchPointer).getItem();
 
 		// 먼저 중복 체크 후 키 중복이 있다면 insert 하지 않고 false 리턴
-		if ()
+		// if ()
 
 
 		// 중복이 없다면 정렬 키 비교후 insertPointer 수정 이후 다음 루프 실행
@@ -118,6 +118,38 @@ bool MyList<T, V, K>::insert(T<V, K> item) {
 	}
 
 	// insert 
+
+	return false;
+
+
+}
+
+template< template <typename, typename> class T,
+	typename V, typename K>
+void MyList<T, V, K>::addFirst(T<V, K> item) {
+
+	Node<T, V, K>* tmpPtr = dummyHead.getNext();
+
+	Node<T, V, K>* newNode = new Node<T, V, K>(item);
+	(*newNode).setNext(dummyHead.getNext());
+	dummyHead.setNext(newNode);
+
+
+}
+
+template< template <typename, typename> class T,
+	typename V, typename K>
+void MyList<T, V, K>::print() const {
+
+	Node<T, V, K>* tmp = dummyHead&;
+
+	for (int i = 0; i < size; i++ {
+
+		tmp = (*tmp).getNext();
+		T<V, K>* item = (*tmp).getItem();
+		cout << (*item) << endl;
+
+	}
 
 
 }
