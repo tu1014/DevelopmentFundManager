@@ -365,3 +365,4 @@ FodyWeavers.xsd
 /DevelopmentFundManager/DevelopmentFundManager.vcxproj
 /DevelopmentFundManager.sln
 /DevelopmentFundManager/DevelopmentFundManager.vcxproj.filters
+/DevelopmentFundManager/Test.cpp
