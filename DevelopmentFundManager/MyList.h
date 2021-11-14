@@ -1,7 +1,8 @@
 #pragma once
 using namespace std;
 
-template<typename T>
+template< template <typename, typename> class T,
+	      typename V, typename K>
 class MyList
 {
 
@@ -10,7 +11,7 @@ public:
 	MyList();
 	~MyList();
 
-
+	bool insert(T<V, K> item);
 
 
 private:
@@ -22,15 +23,17 @@ private:
 
 };
 
-template<typename T>
+template< template <typename, typename> class T,
+	typename V, typename K>
 class Node {
 
 public:
 
-	Node(T element);
+	Node(T<V, K> element);
 	Node();
 	~Node();
 
+	const T<V, K>& getItem() const;
 	const Node& getNext() const;
 	const Node& getPrev() const;
 	void setNext(Node& nextNode);
@@ -39,10 +42,10 @@ public:
 
 private:
 
-	T* ptr_element;
+	T<V, K>* ptr_item;
 
-	Node* prev;
-	Node* next;
+	Node* ptr_prev;
+	Node* ptr_next;
 
 	// 굳이 선언해야 할까?
 	friend class MyList;
