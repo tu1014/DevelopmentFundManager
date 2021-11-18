@@ -45,6 +45,6 @@ private:
 	Node* next;
 
 	// 굳이 선언해야 할까?
-	friend class MyList;
+	friend class MyList<T>;
 
 };
