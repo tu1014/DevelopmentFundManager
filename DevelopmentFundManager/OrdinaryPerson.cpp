@@ -12,16 +12,15 @@ OrdinaryPerson::OrdinaryPerson(
 
 	// TODO: static 멤버 사용하여 기탁자 코드 부여
 	// 현재는 임시 코드부여
-	depositorCode = "";
+	depositorCode = "V0000001";
 
 }
 
 void OrdinaryPerson::print() const {
 
-	cout << "[ 일반 ] " << getName() << "(기탁자코드:" 
+	cout << " [ 일반 ] " << getName() << "(기탁자코드:" 
 		 << depositorCode << ") "
-		 << getPhoneNumber() << " " << getFundAmount()
-		 << endl;
+		 << getPhoneNumber() << " " << getFundAmount();
 
 }
 
@@ -29,4 +28,20 @@ void OrdinaryPerson::read() const {
 
 
 
+}
+
+bool OrdinaryPerson::isDuplicatedKey(string key) const {
+
+	if (key == getPhoneNumber()) return true;
+	if (key == depositorCode) return true;
+
+	return false;
+}
+
+bool OrdinaryPerson::operator==(const Person& person) const {
+
+	if (person.isDuplicatedKey(getPhoneNumber())) return true;
+	if (person.isDuplicatedKey(depositorCode)) return true;
+
+	else return false;
 }

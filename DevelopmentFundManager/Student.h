@@ -21,9 +21,9 @@ public:
 	void print() const;
 	void read() const;
 
-	bool operator==(const Student& student) const;
-	bool operator>(const Student& student) const;
-	bool operator<(const Student& student) const;
+	bool isDuplicatedKey(string key) const;
+
+	bool operator==(const Person& person) const;
 
 	// friend 
 

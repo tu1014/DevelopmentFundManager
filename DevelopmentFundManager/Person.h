@@ -15,13 +15,15 @@ public:
 	const string getPhoneNumber() const;
 	const int getFundAmount() const;
 
-	// friend 함수는 가상 함수로 선언 불가 >> 멤버 함수로 사용하자
+	bool operator>(const Person& person) const;
+	bool operator<(const Person& person) const;
+	
+	virtual bool isDuplicatedKey(string key) const = 0;
+
 	virtual void read() const = 0;
 	virtual void print() const = 0;
 
 	virtual bool operator==(const Person& person) const = 0;
-	virtual bool operator>(const Person& person) const = 0;
-	virtual bool operator<(const Person& person) const = 0;
 
 	friend ostream& operator<<(ostream& outputStream, const Person& person);
 

@@ -19,11 +19,10 @@ Student::~Student() {}
 
 void Student::print() const {
 
-	cout << "[ 학생 ] " << getName() << "(학번:"
+	cout << " [ 학생 ] " << getName() << "(학번:"
 		 << studentNumber << ", 학과:"
 		 << department << ") "
-		 << getPhoneNumber() << " " << getFundAmount()
-		 << endl;
+		 << getPhoneNumber() << " " << getFundAmount();
 
 }
 
@@ -35,26 +34,18 @@ void Student::read() const {
 
 };
 
-bool Student::operator==(const Student& student) const {
+bool Student::isDuplicatedKey(string key) const {
 
-	if (getPhoneNumber() == student.getPhoneNumber()) return true;
+	if (key == getPhoneNumber()) return true;
+	if (key == studentNumber) return true;
 
-	if (studentNumber == student.studentNumber) return true;
+	return false;
+}
+
+bool Student::operator==(const Person& person) const {
+
+	if (person.isDuplicatedKey(getPhoneNumber())) return true;
+	if (person.isDuplicatedKey(studentNumber)) return true;
 
 	else return false;
-
-}
-
-bool Student::operator<(const Student& student) const {
-
-	return (getFundAmount() < student.getFundAmount());
-
-
-}
-
-bool Student::operator>(const Student& student) const {
-
-	return (getFundAmount() > student.getFundAmount());
-
-
 }

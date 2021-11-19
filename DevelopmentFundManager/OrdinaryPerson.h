@@ -18,6 +18,10 @@ public:
 	// set lastCode
 	// get lastCode ÇÊ¿ä
 
+	bool isDuplicatedKey(string key) const;
+
+	bool operator==(const Person& person) const;
+
 
 private:
 

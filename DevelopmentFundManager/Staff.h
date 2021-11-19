@@ -19,6 +19,10 @@ public:
 	void print() const;
 	void read() const;
 
+	bool isDuplicatedKey(string key) const;
+
+	bool operator==(const Person& person) const;
+
 private:
 
 	string department;

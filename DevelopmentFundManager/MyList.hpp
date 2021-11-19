@@ -109,6 +109,7 @@ bool MyList<T>::insert(T& newItem) {
 		if (newItem == *item) {
 
 			cout << "중복 발생" << endl;
+			(*newNode).ptr_item = NULL;
 			delete newNode;
 			return false;
 
@@ -130,7 +131,7 @@ bool MyList<T>::insert(T& newItem) {
 template<typename T>
 void MyList<T>::print() const {
 
-	cout << "출력" << endl;
+	cout << "=======================" << endl;
 
 	if (size == 0) return;
 
@@ -142,7 +143,7 @@ void MyList<T>::print() const {
 
 	}
 
-	cout << "출력 끝" << endl;
+	cout << "=======================" << endl;
 
 
 }

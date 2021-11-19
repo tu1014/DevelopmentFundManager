@@ -33,7 +33,15 @@ const int Person::getFundAmount() const { return fundAmount; }
 ostream& operator<<(ostream& outputStream, const Person& person) {
 
 	person.print();
-
 	return outputStream;
+}
 
+bool Person::operator<(const Person& person) const {
+
+	return (fundAmount < person.fundAmount);
+}
+
+bool Person::operator>(const Person& person) const {
+
+	return (fundAmount > person.fundAmount);
 }
