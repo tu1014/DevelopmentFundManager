@@ -49,13 +49,29 @@ bool APPController::readFile(const string fileName) {
 	// 파일 네임 다시 받기 예외 처리
 }
 
+void APPController::printAll() {
+
+	cout << endl;
+
+	if (dataManipulator.isEmpty()) cout << "No Data";
+
+	else {
+		cout << "   <후원자 전체 조회>" << endl << endl;
+		dataManipulator.printAll();
+	}
+
+	cout << endl;
+	
+
+}
+
 void APPController::executeCommand(const int command) {
 
 	switch (command) {
 
 	case PRINT_ALL:
 
-		cout << 1 << endl;
+		printAll();
 		break;
 
 	case REGISTER:
@@ -84,5 +100,7 @@ void APPController::executeCommand(const int command) {
 		ui.printInvalidInputMessage();
 		break;
 	}
+
+	cout << endl << endl;
 
 }

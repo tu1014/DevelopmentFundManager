@@ -49,6 +49,7 @@ public:
 
 	bool insert(T& ptr_item);
 	void print() const;
+	int getSize() const;
 
 private:
 

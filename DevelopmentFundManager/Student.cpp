@@ -1,4 +1,5 @@
 #include "Student.h"
+#include <string>
 #include <iostream>
 
 Student::Student(
@@ -15,22 +16,36 @@ Student::Student(
 	studentNumber = _stdNumber;
 }
 
+Student::Student() : Person() {}
+
 Student::~Student() {}
 
 void Student::print() const {
 
-	cout << " [ 학생 ] " << getName() << "(학번:"
+	cout << "   [ 학생 ] " << getName() << "(학번:"
 		 << studentNumber << ", 학과:"
 		 << department << ") "
 		 << getPhoneNumber() << " " << getFundAmount();
 
 }
 
-void Student::read() const {
+void Student::read(stringstream& ss) {
 
-	// 파일 입출력 공부 후 작성
+	ss >> studentNumber;
 
+	string name;
+	ss >> name;
+	setName(name);
 
+	ss >> department;
+
+	string phoneNumber;
+	ss >> phoneNumber;
+	setPhoneNumber(phoneNumber);
+
+	int fundAmount;
+	ss >> fundAmount;
+	setFundAmount(fundAmount);
 
 };
 

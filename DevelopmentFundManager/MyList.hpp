@@ -93,7 +93,7 @@ bool MyList<T>::insert(T& newItem) {
 
 		size++;
 		dummyHead.insertNext(*newNode);
-		cout << "삽입 성공" << endl;
+		// cout << "삽입 성공" << endl;
 		return true;
 
 	}
@@ -108,7 +108,7 @@ bool MyList<T>::insert(T& newItem) {
 
 		if (newItem == *item) {
 
-			cout << "중복 발생" << endl;
+			// cout << "중복 발생" << endl;
 			(*newNode).ptr_item = NULL;
 			delete newNode;
 			return false;
@@ -121,7 +121,7 @@ bool MyList<T>::insert(T& newItem) {
 
 	(*insertIndex).insertNext(*newNode);
 
-	cout << "삽입 성공" << endl;
+	// cout << "삽입 성공" << endl;
 	size++;
 
 	return true;
@@ -130,8 +130,6 @@ bool MyList<T>::insert(T& newItem) {
 
 template<typename T>
 void MyList<T>::print() const {
-
-	cout << "=======================" << endl;
 
 	if (size == 0) return;
 
@@ -142,8 +140,7 @@ void MyList<T>::print() const {
 		node = &((*node).getNext());
 
 	}
-
-	cout << "=======================" << endl;
-
-
 }
+
+template<typename T>
+int MyList<T>::getSize() const { return size; }

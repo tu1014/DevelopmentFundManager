@@ -11,6 +11,8 @@ public:
 	DataManipulator();
 	void setFileName(const string fileName);
 	bool readFile(const string fileName);
+	bool isEmpty() const;
+	void printAll() const;
 
 
 private:

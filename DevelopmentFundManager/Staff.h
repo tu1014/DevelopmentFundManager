@@ -1,11 +1,14 @@
 #pragma once
 #include <string>
+#include <sstream>
 #include "Person.h"
 
 class Staff : public Person
 {
 
 public:
+
+	Staff();
 
 	Staff(
 		string name,
@@ -17,7 +20,7 @@ public:
 	);
 
 	void print() const;
-	void read() const;
+	void read(stringstream& ss);
 
 	bool isDuplicatedKey(string key) const;
 

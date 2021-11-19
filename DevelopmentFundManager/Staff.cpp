@@ -18,9 +18,11 @@ Staff::Staff(
 	extensionNumber = _extensionNumber;
 }
 
+Staff::Staff() : Person() {}
+
 void Staff::print() const {
 
-	cout << " [교직원] " << getName() << "(사번:"
+	cout << "   [교직원] " << getName() << "(사번:"
 		 << staffNumber << ", 부서:"
 		 << department << "(x"
 		 << extensionNumber << ")) "
@@ -28,9 +30,24 @@ void Staff::print() const {
 	 
 }
 
-void Staff::read() const {
+void Staff::read(stringstream& ss) {
 
+	ss >> staffNumber;
 
+	string name;
+	ss >> name;
+	setName(name);
+
+	ss >> department;
+	ss >> extensionNumber;
+
+	string phoneNumber;
+	ss >> phoneNumber;
+	setPhoneNumber(phoneNumber);
+
+	int fundAmount;
+	ss >> fundAmount;
+	setFundAmount(fundAmount);
 
 }
 

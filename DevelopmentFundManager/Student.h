@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 #include <iostream>
 #include "Person.h"
 using namespace std;
@@ -8,6 +9,8 @@ class Student : public Person
 {
 
 public:
+
+	Student();
 
 	Student(
 		string name,
@@ -19,7 +22,7 @@ public:
 	~Student();
 
 	void print() const;
-	void read() const;
+	void read(stringstream& ss);
 
 	bool isDuplicatedKey(string key) const;
 

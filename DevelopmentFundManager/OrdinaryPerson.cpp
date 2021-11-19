@@ -16,15 +16,17 @@ OrdinaryPerson::OrdinaryPerson(
 
 }
 
+OrdinaryPerson::OrdinaryPerson() : Person() {}
+
 void OrdinaryPerson::print() const {
 
-	cout << " [ 일반 ] " << getName() << "(기탁자코드:" 
+	cout << "   [ 일반 ] " << getName() << "(기탁자코드:" 
 		 << depositorCode << ") "
 		 << getPhoneNumber() << " " << getFundAmount();
 
 }
 
-void OrdinaryPerson::read() const {
+void OrdinaryPerson::read(stringstream& ss) {
 
 
 

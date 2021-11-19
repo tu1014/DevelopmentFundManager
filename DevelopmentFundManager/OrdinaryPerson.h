@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
+#include <sstream>
 #include "Person.h"
 
 class OrdinaryPerson : public Person
 {
 public:
+
+	OrdinaryPerson();
 
 	OrdinaryPerson(
 		string name,
@@ -13,7 +16,7 @@ public:
 	);
 
 	void print() const;
-	void read() const;
+	void read(stringstream& ss);
 
 	// set lastCode
 	// get lastCode ÇÊ¿ä
