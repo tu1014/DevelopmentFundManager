@@ -20,7 +20,7 @@ public:
 	const int readCommand() const;
 	void executeCommand(const int command);
 	void fileNotFound();
-	void readFile(const string fileName);
+	bool readFile(const string fileName);
 
 
 private:

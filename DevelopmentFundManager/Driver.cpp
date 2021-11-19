@@ -5,11 +5,17 @@ int main(int argc, char* argv[]) {
 
 	APPController controller;
 
-	if (argc != 2)
-		controller.fileNotFound();
+	if (argc != 2) {
 
-	
-	controller.readFile(argv[1]);
+		controller.fileNotFound();
+		return 1;
+	}
+
+	// 명령형 인자 넣어주기 예외처리
+	if (controller.readFile(argv[1]) == false) {
+
+		return 1;
+	}
 
 	while (controller.getRunningState()) {
 

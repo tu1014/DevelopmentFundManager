@@ -10,7 +10,7 @@ public:
 
 	DataManipulator();
 	void setFileName(const string fileName);
-	void readFile(const string fileName);
+	bool readFile(const string fileName);
 
 
 private:

@@ -43,9 +43,10 @@ void APPController::fileNotFound() {
 	ui.printFileNotFoundError();
 }
 
-void APPController::readFile(const string fileName) {
+bool APPController::readFile(const string fileName) {
 
-	dataManipulator.readFile(fileName);
+	return dataManipulator.readFile(fileName);
+	// 파일 네임 다시 받기 예외 처리
 }
 
 void APPController::executeCommand(const int command) {
