@@ -19,6 +19,10 @@ public:
 	virtual void read() const = 0;
 	virtual void print() const = 0;
 
+	virtual bool operator==(const Person& person) const = 0;
+	virtual bool operator>(const Person& person) const = 0;
+	virtual bool operator<(const Person& person) const = 0;
+
 
 private:
 

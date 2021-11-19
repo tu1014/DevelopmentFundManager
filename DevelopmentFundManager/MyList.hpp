@@ -3,7 +3,7 @@
 using namespace std;
 
 template<typename T>
-Node<T>::Node() {
+MyList<T>::Node::Node() {
 
 	// circular dummy head constructor
 	ptr_item = NULL;
@@ -13,16 +13,16 @@ Node<T>::Node() {
 }
 
 template<typename T>
-Node<T>::Node(T& element) {
+MyList<T>::Node::Node(T& element) {
 
-	ptr_item = element;
+	ptr_item = &element;
 	ptr_prev = NULL;
 	ptr_next = NULL;
 
 }
 
 template<typename T>
-Node<T>::~Node() {
+MyList<T>::Node::~Node() {
 
 	cout << "Node 삭제" << endl;
 	delete ptr_item;
@@ -34,31 +34,37 @@ Node<T>::~Node() {
 }
 
 template<typename T>
-const Node<T>& Node<T>::getNext() const { return ptr_next; }
+MyList<T>::Node& MyList<T>::Node::getNext() const { return *ptr_next; }
 
 template<typename T>
-const Node<T>& Node<T>::getPrev() const { return ptr_prev; }
+MyList<T>::Node& MyList<T>::Node::getPrev() const { return *ptr_prev; }
 
 template<typename T>
-void Node<T>::setNext(Node& nextNode) {
+void MyList<T>::Node::setNext(Node& node) {
 
-	(*nextNode).setPrev(this);
-	(*nextNode).setNext(ptr_next);
-	ptr_next = nextNode;
+	ptr_next = &node;
 
 }
 
 template<typename T>
-void Node<T>::setPrev(Node& prevNode) {
+void MyList<T>::Node::setPrev(Node& node) {
 
-	(*prevNode).setPrev(ptr_prev);
-	(*prevNode).setNext(this);
-	ptr_prev = prevNode;
+	ptr_prev = &node;
 
 }
 
 template<typename T>
-const T& Node<T>::getItem() const { return ptr_item; }
+T& MyList<T>::Node::getItem() { return *ptr_item; }
+
+template<typename T>
+void MyList<T>::Node::insertNext(Node& node) {
+
+	node.setPrev(*this);
+	node.setNext(*ptr_next);
+	(*ptr_next).setPrev(node);
+	ptr_next = &node;
+
+}
 
 
 ////////////////////////////////////////////////////////////
@@ -70,8 +76,10 @@ MyList<T>::MyList() {
 
 }
 
+// 제거자 정의 필요
+
 template<typename T>
-bool MyList<T>::insert(const T& newItem) {
+bool MyList<T>::insert(T& newItem) {
 
 	// 비어 있으면 맨 앞에 삽입
 
@@ -79,15 +87,12 @@ bool MyList<T>::insert(const T& newItem) {
 	// 루프 돌면서 삽입해야 할 인덱스 기억
 	// 루프 돌다 중복 발견하면 false 리턴
 
-	Node<T>* newNode = new Node<T>(newItem);
+	Node* newNode = new Node(newItem);
 
 	if (size == 0) {
 
 		size++;
-		(*newNode).setPrev(dummyHead);
-		(*newNode).setNext(dummyHead);
-		dummyHead.setPrev(newNode);
-		dummyHead.setNext(newNode);
+		dummyHead.insertNext(*newNode);
 		cout << "삽입 성공" << endl;
 		return true;
 
@@ -113,10 +118,7 @@ bool MyList<T>::insert(const T& newItem) {
 
 	}
 
-	(*newNode).setPrev(insertIndex);
-	(*newNode).setNext((*insertIndex).getNext());
-	(*(*insertIndex).getNext()).setPrev(newNode);
-	(*insertIndex).setNext(newNode);
+	(*insertIndex).insertNext(*newNode);
 
 	cout << "삽입 성공" << endl;
 	size++;
@@ -132,11 +134,11 @@ void MyList<T>::print() const {
 
 	if (size == 0) return;
 
-	Node<T>* node = dummyHead.getNext();
+	Node<T>* node = &(dummyHead.getNext());
 	for (int i = 0; i < size; i++) {
 
-		cout << (*(*node).getItem) << endl;
-		node = (*node).getNext();
+		cout << (*node).getItem << endl;
+		node = &((*node).getNext());
 
 	}
 

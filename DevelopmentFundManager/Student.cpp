@@ -34,3 +34,20 @@ void Student::read() const {
 
 
 };
+
+bool Student::operator==(const Student& student) const {
+
+	if (getPhoneNumber() == student.getPhoneNumber()) return true;
+
+	if (studentNumber == student.studentNumber) return true;
+
+	else return false;
+
+}
+
+bool Student::operator<(const Student& student) const {
+
+	return (getFundAmount() < student.getFundAmount());
+
+
+}
