@@ -29,3 +29,11 @@ bool Person::addFundAmount(int amount) {
 const string Person::getName() const { return name; }
 const string Person::getPhoneNumber() const  { return phoneNumber; }
 const int Person::getFundAmount() const { return fundAmount; }
+
+ostream& operator<<(ostream& outputStream, const Person& person) {
+
+	person.print();
+
+	return outputStream;
+
+}

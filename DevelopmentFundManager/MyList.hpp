@@ -3,7 +3,7 @@
 using namespace std;
 
 template<typename T>
-MyList<T>::Node::Node() {
+Node<T>::Node() {
 
 	// circular dummy head constructor
 	ptr_item = NULL;
@@ -13,7 +13,7 @@ MyList<T>::Node::Node() {
 }
 
 template<typename T>
-MyList<T>::Node::Node(T& element) {
+Node<T>::Node(T& element) {
 
 	ptr_item = &element;
 	ptr_prev = NULL;
@@ -22,7 +22,7 @@ MyList<T>::Node::Node(T& element) {
 }
 
 template<typename T>
-MyList<T>::Node::~Node() {
+Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
 	delete ptr_item;
@@ -34,30 +34,30 @@ MyList<T>::Node::~Node() {
 }
 
 template<typename T>
-MyList<T>::Node& MyList<T>::Node::getNext() const { return *ptr_next; }
+Node<T>& Node<T>::getNext() const { return *ptr_next; }
 
 template<typename T>
-MyList<T>::Node& MyList<T>::Node::getPrev() const { return *ptr_prev; }
+Node<T>& Node<T>::getPrev() const { return *ptr_prev; }
 
 template<typename T>
-void MyList<T>::Node::setNext(Node& node) {
+void Node<T>::setNext(Node<T>& node) {
 
 	ptr_next = &node;
 
 }
 
 template<typename T>
-void MyList<T>::Node::setPrev(Node& node) {
+void Node<T>::setPrev(Node<T>& node) {
 
 	ptr_prev = &node;
 
 }
 
 template<typename T>
-T& MyList<T>::Node::getItem() { return *ptr_item; }
+T& Node<T>::getItem() { return *ptr_item; }
 
 template<typename T>
-void MyList<T>::Node::insertNext(Node& node) {
+void Node<T>::insertNext(Node<T>& node) {
 
 	node.setPrev(*this);
 	node.setNext(*ptr_next);
@@ -87,7 +87,7 @@ bool MyList<T>::insert(T& newItem) {
 	// 루프 돌면서 삽입해야 할 인덱스 기억
 	// 루프 돌다 중복 발견하면 false 리턴
 
-	Node* newNode = new Node(newItem);
+	Node<T>* newNode = new Node<T>(newItem);
 
 	if (size == 0) {
 
@@ -98,13 +98,13 @@ bool MyList<T>::insert(T& newItem) {
 
 	}
 
-	Node<T>* tmpNode = dummyHead;
-	Node<T>* insertIndex = dummyHead.getNext();
+	Node<T>* tmpNode = &dummyHead;
+	Node<T>* insertIndex = &(dummyHead.getNext());
 	T* item;
 	for (int i = 0; i < size; i++) {
 
-		tmpNode = (*tmpNode).getNext();
-		item = (*tmpNode).getItem();
+		tmpNode = &((*tmpNode).getNext());
+		item = &((*tmpNode).getItem());
 
 		if (newItem == *item) {
 
@@ -137,7 +137,7 @@ void MyList<T>::print() const {
 	Node<T>* node = &(dummyHead.getNext());
 	for (int i = 0; i < size; i++) {
 
-		cout << (*node).getItem << endl;
+		cout << (*node).getItem() << endl;
 		node = &((*node).getNext());
 
 	}

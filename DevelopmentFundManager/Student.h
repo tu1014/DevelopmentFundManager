@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
+#include <iostream>
 #include "Person.h"
+using namespace std;
 
 class Student : public Person
 {
@@ -22,6 +24,8 @@ public:
 	bool operator==(const Student& student) const;
 	bool operator>(const Student& student) const;
 	bool operator<(const Student& student) const;
+
+	// friend 
 
 
 private:

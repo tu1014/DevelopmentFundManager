@@ -23,6 +23,7 @@ public:
 	virtual bool operator>(const Person& person) const = 0;
 	virtual bool operator<(const Person& person) const = 0;
 
+	friend ostream& operator<<(ostream& outputStream, const Person& person);
 
 private:
 

@@ -51,3 +51,10 @@ bool Student::operator<(const Student& student) const {
 
 
 }
+
+bool Student::operator>(const Student& student) const {
+
+	return (getFundAmount() > student.getFundAmount());
+
+
+}
