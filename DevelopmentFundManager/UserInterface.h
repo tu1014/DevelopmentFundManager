@@ -5,26 +5,21 @@ using namespace std;
 class UserInterface
 {
 
-
-
 public:
-
-	const static int PRINT_ALL;
-	const static int REGISTER;
-	const static int UPDATE;
-	const static int DELETE;
-	const static int QUIT;
 
 	void printMainUI() const;
 	void printRegisterUI() const;
 	void printUpdateUI() const;
 	void printDeleteUI() const;
-	void printQuitUI() const;
+	void printQuitUI(string fileName) const;
+	void printWelcome() const;
+	void printGoodByeMessage() const;
+	void printInvalidInputMessage() const;
+	void printFileNotFoundError() const;
 
+	// 예외처리 필요
 	const int readInt() const;
-	const string readString() const;
-
-
+	const string readLine() const;
 
 private:
 
