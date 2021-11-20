@@ -44,10 +44,25 @@ ostream& operator<<(ostream& outputStream, const Person& person) {
 
 bool Person::operator<(const Person& person) const {
 
+	if (fundAmount == person.fundAmount) {
+
+		if (name == person.name) return (phoneNumber > person.phoneNumber);
+
+		else return (name > person.name);
+	}
+
 	return (fundAmount < person.fundAmount);
 }
 
 bool Person::operator>(const Person& person) const {
+
+	if (fundAmount == person.fundAmount) {
+
+		if (name == person.name) return (phoneNumber < person.phoneNumber);
+
+		else return (name < person.name);
+
+	}
 
 	return (fundAmount > person.fundAmount);
 }

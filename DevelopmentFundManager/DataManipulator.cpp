@@ -30,7 +30,7 @@ bool DataManipulator::readFile(const string _fileName) {
 
 	if (inStream.is_open() == false) {
 
-		cout << "파일을 열 수 없습니다." << endl;
+		cout << "    파일을 열 수 없습니다." << endl;
 		return false;
 	}
 

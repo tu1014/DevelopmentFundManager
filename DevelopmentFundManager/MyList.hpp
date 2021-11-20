@@ -115,7 +115,7 @@ bool MyList<T>::insert(T& newItem) {
 
 		}
 
-		if ((*item) < (newItem)) insertIndex = tmpNode;
+		if ((*item) > (newItem)) insertIndex = tmpNode;
 
 	}
 
