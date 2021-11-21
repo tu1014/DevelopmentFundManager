@@ -79,3 +79,15 @@ bool DataManipulator::readFile(const string _fileName) {
 	return true;
 
 }
+
+Person* DataManipulator::updateFundAmount(const string& key, int fundAmount) {
+
+	// 음수 처리??
+	Person* target = &(personList.getItemWithKey(key));
+
+	if (target == NULL) return NULL;
+
+	(*target).setFundAmount(target->getFundAmount() + fundAmount);
+	return target;
+
+}

@@ -34,9 +34,9 @@ private:
 	void exit();
 	void printAll();
 	void registerPerson();
-	void updatePerson();
+	void updateFundAmount();
 	void deletePerson();
-	void quit();
+	void checkQuit();
 
 
 

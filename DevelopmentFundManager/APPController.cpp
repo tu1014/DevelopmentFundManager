@@ -83,6 +83,19 @@ void APPController::registerPerson() {
 
 }
 
+void APPController::updateFundAmount() {
+
+	ui.printUpdateUI();
+	string key = ui.readLine();
+
+	ui.printFundAmountUI();
+	int amount = ui.readInt();
+
+
+
+
+}
+
 void APPController::executeCommand(const int command) {
 
 	switch (command) {
