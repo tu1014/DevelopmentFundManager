@@ -64,7 +64,7 @@ const int UserInterface::readInt() const {
 	return i;
 }
 
-const string& UserInterface::readLine() const {
+const string UserInterface::readLine() const {
 
 	string line;
 	// cin.getline
