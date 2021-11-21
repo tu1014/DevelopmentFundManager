@@ -51,8 +51,8 @@ public:
 	bool insert(T& ptr_item);
 	void print() const;
 	int getSize() const;
-	T& getItemWithKey(string& key) const;
-	bool deleteWithKey(string& key) const;
+	T& getItemWithKey(const string& key) const;
+	bool deleteWithKey(const string& key) const;
 
 
 
@@ -61,7 +61,7 @@ private:
 	Node<T> dummyHead;
 	int size;
 
-	Node<T>* search(string& key) const;
+	Node<T>* search(const string& key) const;
 	// Node<T>* targetNode;
 
 
