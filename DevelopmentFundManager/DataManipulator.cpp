@@ -21,6 +21,26 @@ bool DataManipulator::isEmpty() const { return (personList.getSize() == 0); }
 
 void DataManipulator::printAll() const { personList.print(); }
 
+bool DataManipulator::insert(Person* person) {
+
+	if (person == NULL) {
+
+		// cout << "잘못된 레코드" << endl;
+		// 잘못된 입력 데이터 (형식에 맞지 않는 데이터?)
+		return false;
+
+	}
+
+	if (personList.insert(*person) == false) {
+		// 중복 발생
+		delete person;
+		return false;
+	}
+
+	return true;
+
+}
+
 bool DataManipulator::readFile(const string _fileName) {
 
 	fileName = _fileName;
@@ -45,13 +65,8 @@ bool DataManipulator::readFile(const string _fileName) {
 
 		person = Person::stringToPerson(line);
 
-		if (person == NULL) {
+		insert(person);
 
-			cout << "잘못된 레코드" << endl;
-			continue;
-		}
-
-		if (personList.insert(*person) == false) delete person;
 		person = NULL;
 
 	}

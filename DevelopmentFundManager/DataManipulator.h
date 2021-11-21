@@ -13,6 +13,7 @@ public:
 	bool readFile(const string fileName);
 	bool isEmpty() const;
 	void printAll() const;
+	bool insert(Person* person);
 
 
 private:
