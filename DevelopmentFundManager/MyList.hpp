@@ -147,7 +147,7 @@ void MyList<T>::print() const {
 }
 
 template<typename T>
-Node<T>* MyList<T>::search(const string& key) const {
+Node<T>* MyList<T>::search(const string& key) {
 
 	Node<T>* tmpNode = &dummyHead;
 	T* item;
@@ -172,18 +172,18 @@ template<typename T>
 int MyList<T>::getSize() const { return size; }
 
 template<typename T>
-T& MyList<T>::getItemWithKey(const string& key) const {
+T* MyList<T>::getItemWithKey(const string& key) {
 
 	Node<T>* node = search(key);
 	
 	if (node == NULL) return NULL;
 
-	return (*node).getItem();
+	return &((*node).getItem());
 
 }
 
 template<typename T>
-bool MyList<T>::deleteWithKey(const string& key) const {
+bool MyList<T>::deleteWithKey(const string& key) {
 
 	Node<T>* node = search(key);
 
