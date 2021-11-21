@@ -183,14 +183,17 @@ T* MyList<T>::getItemWithKey(const string& key) {
 }
 
 template<typename T>
-bool MyList<T>::deleteWithKey(const string& key) {
+T* MyList<T>::deleteWithKey(const string& key) {
 
 	Node<T>* node = search(key);
 
-	if (node == NULL) return false;
+	if (node == NULL) return NULL;
 
+	T* target = &((*node).getItem());
+	(*node).ptr_item = NULL;
 	delete node;
+	size--;
 
-	return true;
+	return target;
 
 }

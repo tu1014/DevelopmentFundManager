@@ -56,7 +56,7 @@ void APPController::printAll() {
 	if (dataManipulator.isEmpty()) cout << "No Data";
 
 	else {
-		cout << "   <후원자 전체 조회> : 총 ";
+		cout << "<후원자 전체 조회> : 총 ";
 		cout << dataManipulator.getSize() << "명이 후원하였습니다." << endl << endl;
 		dataManipulator.printAll();
 	}
@@ -73,7 +73,7 @@ void APPController::registerPerson() {
 
 	Person* person = Person::stringToPerson(line);
 
-	cout << endl << "    ";
+	cout << endl;
 
 	if (dataManipulator.insert(person)) {
 		cout << "성공 : ";
@@ -91,10 +91,32 @@ void APPController::updateFundAmount() {
 	ui.printFundAmountUI();
 	int amount = ui.readInt();
 
+	Person* target = dataManipulator.updateFundAmount(key, amount);
 
+	cout << endl;
+	if (target == NULL) ui.printPersonNotFoundError();
+	else cout << "<변경> " << *target << endl;
 
+	cout << endl;
 
 }
+
+void APPController::deletePerson() {
+
+	ui.printDeleteUI();
+	string key = ui.readLine();
+
+	Person* target = dataManipulator.deletePerson(key);
+
+	if (target == NULL) ui.printPersonNotFoundError();
+	else {
+		cout << "<삭제> " << *target << endl;
+		delete target;
+	}
+
+	cout << endl;
+}
+
 
 void APPController::executeCommand(const int command) {
 
@@ -112,12 +134,12 @@ void APPController::executeCommand(const int command) {
 
 	case UPDATE:
 
-		cout << 3 << endl;
+		updateFundAmount();
 		break;
 
 	case DELETE:
 
-		cout << 4 << endl;
+		deletePerson();
 		break;
 
 	case QUIT:

@@ -18,7 +18,7 @@ public:
 	int getSize() const;
 
 	Person* updateFundAmount(const string& key, int fundAmount);
-
+	Person* deletePerson(const string& key);
 
 private:
 

@@ -52,7 +52,7 @@ public:
 	void print() const;
 	int getSize() const;
 	T* getItemWithKey(const string& key);
-	bool deleteWithKey(const string& key);
+	T* deleteWithKey(const string& key);
 
 
 
