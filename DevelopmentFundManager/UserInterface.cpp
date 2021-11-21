@@ -73,3 +73,13 @@ const string UserInterface::readLine() const {
 	return line;
 
 }
+
+void UserInterface::printFundAmountUI() const {
+
+	cout << "    추가 기탁액을 입력하세요 : ";
+}
+
+void UserInterface::printPersonNotFoundError() const {
+
+	cout << "    후원자를 찾을 수 없습니다." << endl << endl;
+}

@@ -16,6 +16,8 @@ public:
 	void printGoodByeMessage() const;
 	void printInvalidInputMessage() const;
 	void printFileNotFoundError() const;
+	void printFundAmountUI() const;
+	void printPersonNotFoundError() const;
 
 	// 예외처리 필요
 	const int readInt() const;
