@@ -56,12 +56,27 @@ void APPController::printAll() {
 	if (dataManipulator.isEmpty()) cout << "No Data";
 
 	else {
-		cout << "   <후원자 전체 조회>" << endl << endl;
+		cout << "   <후원자 전체 조회> : " << endl << endl;
 		dataManipulator.printAll();
 	}
 
 	cout << endl;
 	
+
+}
+
+void APPController::registerPerson() {
+
+	ui.printRegisterUI();
+	string line = ui.readLine();
+
+	Person* person = Person::stringToPerson(line);
+
+	if (dataManipulator.insert(person)) {
+		cout << "성공 : ";
+		cout << *person << endl << endl;
+	}
+	else cout << "실패" << endl;
 
 }
 
@@ -76,7 +91,7 @@ void APPController::executeCommand(const int command) {
 
 	case REGISTER:
 
-		cout << 2 << endl;
+		registerPerson();
 		break;
 
 	case UPDATE:
