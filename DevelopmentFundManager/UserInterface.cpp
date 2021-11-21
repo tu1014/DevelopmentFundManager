@@ -66,7 +66,8 @@ const int UserInterface::readInt() const {
 
 const string UserInterface::readLine() const {
 
-	string line = readLine();
+	string line;
+	getline(cin, line);
 	return line;
 
 }
