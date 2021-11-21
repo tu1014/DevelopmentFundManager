@@ -33,6 +33,8 @@ public:
 
 	friend ostream& operator<<(ostream& outputStream, const Person& person);
 
+	static Person* stringToPerson(string line);
+
 private:
 
 	string name;

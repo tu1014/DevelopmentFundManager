@@ -34,27 +34,22 @@ bool DataManipulator::readFile(const string _fileName) {
 		return false;
 	}
 
-	stringstream ss;
 	string line;
 	
 	Person* person;
 
 	while (inStream.eof() == false) {
 
-		ss.str(""); ss.clear();
 		getline(inStream, line);
 		// cout << line << endl;
-		ss << line;
 
-		string personType;
-		ss >> personType;
+		person = Person::stringToPerson(line);
 
-		if (personType == "학생") { person = new Student(); }
-		else if (personType == "교직원") { person = new Staff(); }
-		else if (personType == "일반") { person = new OrdinaryPerson(); }
-		else { continue; }
+		if (person == NULL) {
 
-		(*person).read(ss);
+			cout << "잘못된 레코드" << endl;
+			continue;
+		}
 
 		if (personList.insert(*person) == false) delete person;
 		person = NULL;
