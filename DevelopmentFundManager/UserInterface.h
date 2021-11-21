@@ -19,7 +19,7 @@ public:
 
 	// 예외처리 필요
 	const int readInt() const;
-	const string readLine() const;
+	const string& readLine() const;
 
 private:
 
