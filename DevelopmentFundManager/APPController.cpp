@@ -56,7 +56,8 @@ void APPController::printAll() {
 	if (dataManipulator.isEmpty()) cout << "No Data";
 
 	else {
-		cout << "   <후원자 전체 조회> : " << endl << endl;
+		cout << "   <후원자 전체 조회> : 총 ";
+		cout << dataManipulator.getSize() << "명이 후원하였습니다." << endl << endl;
 		dataManipulator.printAll();
 	}
 
@@ -71,6 +72,8 @@ void APPController::registerPerson() {
 	string line = ui.readLine();
 
 	Person* person = Person::stringToPerson(line);
+
+	cout << endl << "    ";
 
 	if (dataManipulator.insert(person)) {
 		cout << "성공 : ";
