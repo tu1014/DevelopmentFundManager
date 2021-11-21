@@ -14,6 +14,7 @@ public:
 	bool isEmpty() const;
 	void printAll() const;
 	bool insert(Person* person);
+	int getSize() const;
 
 
 private:

@@ -41,6 +41,11 @@ bool DataManipulator::insert(Person* person) {
 
 }
 
+int DataManipulator::getSize() const {
+
+	return personList.getSize();
+}
+
 bool DataManipulator::readFile(const string _fileName) {
 
 	fileName = _fileName;
