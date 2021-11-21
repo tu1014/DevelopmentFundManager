@@ -64,3 +64,11 @@ bool Student::operator==(const Person& person) const {
 
 	else return false;
 }
+
+bool Student::operator==(const string& key) const {
+
+	if (isDuplicatedKey(key)) return true;
+	if (isDuplicatedKey(key)) return true;
+
+	else return false;
+}

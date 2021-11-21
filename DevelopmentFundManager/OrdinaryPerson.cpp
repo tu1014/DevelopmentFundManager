@@ -47,3 +47,11 @@ bool OrdinaryPerson::operator==(const Person& person) const {
 
 	else return false;
 }
+
+bool OrdinaryPerson::operator==(const string& key) const {
+
+	if (isDuplicatedKey(key)) return true;
+	if (isDuplicatedKey(key)) return true;
+
+	else return false;
+}

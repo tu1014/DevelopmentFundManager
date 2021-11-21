@@ -25,6 +25,7 @@ public:
 	bool isDuplicatedKey(string key) const;
 
 	bool operator==(const Person& person) const;
+	bool operator==(const string& key) const;
 
 private:
 

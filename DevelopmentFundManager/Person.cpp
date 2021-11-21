@@ -70,7 +70,7 @@ bool Person::operator>(const Person& person) const {
 	return (fundAmount > person.fundAmount);
 }
 
-Person* Person::stringToPerson(string line) {
+Person* Person::stringToPerson(string& line) {
 
 	stringstream ss;
 	ss.str(""); ss.clear();

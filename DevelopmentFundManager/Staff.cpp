@@ -66,3 +66,11 @@ bool Staff::operator==(const Person& person) const {
 
 	else return false;
 }
+
+bool Staff::operator==(const string& key) const {
+
+	if (isDuplicatedKey(key)) return true;
+	if (isDuplicatedKey(key)) return true;
+
+	else return false;
+}

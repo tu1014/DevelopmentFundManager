@@ -30,10 +30,11 @@ public:
 	virtual void print() const = 0;
 
 	virtual bool operator==(const Person& person) const = 0;
+	virtual bool operator==(const string& key) const = 0;
 
 	friend ostream& operator<<(ostream& outputStream, const Person& person);
 
-	static Person* stringToPerson(string line);
+	static Person* stringToPerson(string& line);
 
 private:
 
