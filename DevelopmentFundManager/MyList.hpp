@@ -25,6 +25,10 @@ template<typename T>
 Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
+
+	(*ptr_prev).setNext(*ptr_next);
+	(*ptr_next).setPrev(*ptr_prev);
+
 	delete ptr_item;
 	// prev, next도 지워야 할까?
 	// 아닌거같은데
@@ -143,4 +147,50 @@ void MyList<T>::print() const {
 }
 
 template<typename T>
+Node<T>* MyList<T>::search(string& key) const {
+
+	Node<T>* tmpNode = &dummyHead;
+	T* item;
+	for (int i = 0; i < size; i++) {
+
+		tmpNode = &((*tmpNode).getNext());
+		item = &((*tmpNode).getItem());
+
+		if (*item == key) {
+
+			// cout << "중복 발생" << endl;
+			return tmpNode;
+
+		}
+	}
+
+	return NULL;
+
+}
+
+template<typename T>
 int MyList<T>::getSize() const { return size; }
+
+template<typename T>
+T& MyList<T>::getItemWithKey(string& key) const {
+
+	Node<T>* node = search(key);
+	
+	if (node == NULL) return NULL;
+
+	return (*node).getItem();
+
+}
+
+template<typename T>
+bool MyList<T>::deleteWithKey(string& key) const {
+
+	Node<T>* node = search(key);
+
+	if (node == NULL) return false;
+
+	delete node;
+
+	return false;
+
+}

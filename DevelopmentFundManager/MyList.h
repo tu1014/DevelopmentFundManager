@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 using namespace std;
 
 
@@ -50,11 +51,18 @@ public:
 	bool insert(T& ptr_item);
 	void print() const;
 	int getSize() const;
+	T& getItemWithKey(string& key) const;
+	bool deleteWithKey(string& key) const;
+
+
 
 private:
 
 	Node<T> dummyHead;
 	int size;
+
+	Node<T>* search(string& key) const;
+	// Node<T>* targetNode;
 
 
 
