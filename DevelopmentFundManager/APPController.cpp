@@ -91,6 +91,7 @@ void APPController::updateFundAmount() {
 	ui.printFundAmountUI();
 	int amount = ui.readInt();
 
+	// 삭제 후 재삽입?
 	Person* target = dataManipulator.updateFundAmount(key, amount);
 
 	cout << endl;
@@ -144,7 +145,6 @@ void APPController::executeCommand(const int command) {
 
 	case QUIT:
 
-		// cout << 5 << endl;
 		exit();
 		break;
 

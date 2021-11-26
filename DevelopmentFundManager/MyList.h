@@ -48,7 +48,7 @@ public:
 	MyList();
 	// ~MyList();
 
-	bool insert(T& ptr_item);
+	bool insert(T& item);
 	void print() const;
 	int getSize() const;
 	T* getItemWithKey(const string& key);

@@ -82,14 +82,21 @@ bool DataManipulator::readFile(const string _fileName) {
 
 Person* DataManipulator::updateFundAmount(const string& key, int fundAmount) {
 
-	// 음수 처리??
-	Person* target = personList.getItemWithKey(key);
+	// 음수  예외 처리??
+	/*Person* target = personList.getItemWithKey(key);
 
 	if (target == NULL) return NULL;
 
 	(*target).setFundAmount(target->getFundAmount() + fundAmount);
-	return target;
+	return target;*/
 
+	Person* person = deletePerson(key);
+	if (person == NULL) return NULL;
+
+	(*person).setFundAmount(person->getFundAmount() + fundAmount);
+	insert(person);
+
+	return person;
 }
 
 Person* DataManipulator::deletePerson(const string& key) {

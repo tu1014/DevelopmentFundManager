@@ -24,6 +24,7 @@ public:
 	void setPhoneNumber(const string& phoneNumber);
 	void setFundAmount(const int fundAmount);
 	
+	// const string
 	virtual bool isDuplicatedKey(string key) const = 0;
 
 	virtual void read(stringstream& ss) = 0;
