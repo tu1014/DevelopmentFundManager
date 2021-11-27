@@ -14,18 +14,18 @@ class Node {
 
 public:
 
-	Node(T& ptr_item);
+	Node(T* ptr_item);
 	Node();
 	~Node();
 
-	Node& getNext() const;
-	Node& getPrev() const;
-	void setNext(Node& nextNode);
-	void setPrev(Node& prevNode);
+	Node* getNext() const;
+	Node* getPrev() const;
+	void setNext(Node* nextNode);
+	void setPrev(Node* prevNode);
 
-	void insertNext(Node& node);
+	void insertNext(Node* node);
 
-	T& getItem();
+	T* getItem();
 
 private:
 
@@ -48,7 +48,7 @@ public:
 	MyList();
 	// ~MyList();
 
-	bool insert(T& item);
+	bool insert(T* item);
 	void print() const;
 	int getSize() const;
 	T* getItemWithKey(const string& key);

@@ -31,7 +31,7 @@ bool DataManipulator::insert(Person* person) {
 
 	}
 
-	if (personList.insert(*person) == false) {
+	if (personList.insert(person) == false) {
 		// 중복 발생
 		delete person;
 		return false;

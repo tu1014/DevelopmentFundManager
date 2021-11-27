@@ -13,9 +13,9 @@ Node<T>::Node() {
 }
 
 template<typename T>
-Node<T>::Node(T& element) {
+Node<T>::Node(T* element) {
 
-	ptr_item = &element;
+	ptr_item = element;
 	ptr_prev = NULL;
 	ptr_next = NULL;
 
@@ -26,8 +26,8 @@ Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
 
-	(*ptr_prev).setNext(*ptr_next);
-	(*ptr_next).setPrev(*ptr_prev);
+	(*ptr_prev).setNext(ptr_next);
+	(*ptr_next).setPrev(ptr_prev);
 
 	delete ptr_item;
 	// prev, next도 지워야 할까?
@@ -38,35 +38,35 @@ Node<T>::~Node() {
 }
 
 template<typename T>
-Node<T>& Node<T>::getNext() const { return *ptr_next; }
+Node<T>* Node<T>::getNext() const { return ptr_next; }
 
 template<typename T>
-Node<T>& Node<T>::getPrev() const { return *ptr_prev; }
+Node<T>* Node<T>::getPrev() const { return ptr_prev; }
 
 template<typename T>
-void Node<T>::setNext(Node<T>& node) {
+void Node<T>::setNext(Node<T>* node) {
 
-	ptr_next = &node;
+	ptr_next = node;
 
 }
 
 template<typename T>
-void Node<T>::setPrev(Node<T>& node) {
+void Node<T>::setPrev(Node<T>* node) {
 
-	ptr_prev = &node;
+	ptr_prev = node;
 
 }
 
 template<typename T>
-T& Node<T>::getItem() { return *ptr_item; }
+T* Node<T>::getItem() { return ptr_item; }
 
 template<typename T>
-void Node<T>::insertNext(Node<T>& node) {
+void Node<T>::insertNext(Node<T>* node) {
 
-	node.setPrev(*this);
-	node.setNext(*ptr_next);
+	(*node).setPrev(this);
+	(*node).setNext(ptr_next);
 	(*ptr_next).setPrev(node);
-	ptr_next = &node;
+	ptr_next = node;
 
 }
 
@@ -83,7 +83,7 @@ MyList<T>::MyList() {
 // 제거자 정의 필요
 
 template<typename T>
-bool MyList<T>::insert(T& newItem) {
+bool MyList<T>::insert(T* newItem) {
 
 	// 비어 있으면 맨 앞에 삽입
 
@@ -96,34 +96,35 @@ bool MyList<T>::insert(T& newItem) {
 	if (size == 0) {
 
 		size++;
-		dummyHead.insertNext(*newNode);
+		dummyHead.insertNext(newNode);
 		// cout << "삽입 성공" << endl;
 		return true;
 
 	}
 
 	Node<T>* tmpNode = &dummyHead;
-	Node<T>* insertIndex = &(dummyHead.getNext());
+	Node<T>* insertIndex = dummyHead.getNext();
 	T* item;
 	for (int i = 0; i < size; i++) {
 
-		tmpNode = &((*tmpNode).getNext());
-		item = &((*tmpNode).getItem());
+		tmpNode = (*tmpNode).getNext();
+		item = (*tmpNode).getItem();
 
-		if (newItem == *item) {
+		if (*newItem == *item) {
 
 			// cout << "중복 발생" << endl;
 			(*newNode).ptr_item = NULL;
 			delete newNode;
+			// new Item은 어디서 지우나?
 			return false;
 
 		}
 
-		if ((*item) > (newItem)) insertIndex = tmpNode;
+		if ((*item) > (*newItem)) insertIndex = tmpNode;
 
 	}
 
-	(*insertIndex).insertNext(*newNode);
+	(*insertIndex).insertNext(newNode);
 
 	// cout << "삽입 성공" << endl;
 	size++;
@@ -132,16 +133,17 @@ bool MyList<T>::insert(T& newItem) {
 
 }
 
+// Iterator 사용하여 다른 클래스에서 수행하자
 template<typename T>
 void MyList<T>::print() const {
 
 	if (size == 0) return;
 
-	Node<T>* node = &(dummyHead.getNext());
+	Node<T>* node = dummyHead.getNext();
 	for (int i = 0; i < size; i++) {
 
-		cout << (*node).getItem() << endl;
-		node = &((*node).getNext());
+		cout << *((*node).getItem()) << endl;
+		node = (*node).getNext();
 
 	}
 }
@@ -153,8 +155,8 @@ Node<T>* MyList<T>::search(const string& key) {
 	T* item;
 	for (int i = 0; i < size; i++) {
 
-		tmpNode = &((*tmpNode).getNext());
-		item = &((*tmpNode).getItem());
+		tmpNode = (*tmpNode).getNext();
+		item = (*tmpNode).getItem();
 
 		if (*item == key) {
 
@@ -178,7 +180,7 @@ T* MyList<T>::getItemWithKey(const string& key) {
 	
 	if (node == NULL) return NULL;
 
-	return &((*node).getItem());
+	return (*node).getItem();
 
 }
 
@@ -189,7 +191,7 @@ T* MyList<T>::deleteWithKey(const string& key) {
 
 	if (node == NULL) return NULL;
 
-	T* target = &((*node).getItem());
+	T* target = (*node).getItem();
 	(*node).ptr_item = NULL;
 	delete node;
 	size--;
