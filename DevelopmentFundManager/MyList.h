@@ -61,8 +61,6 @@ public:
 	private:
 
 		Node<T>* pointer;
-
-
 	};
 
 	MyList();
@@ -71,7 +69,6 @@ public:
 	Iterator end() const;
 
 	bool insert(T* item);
-	void print() const;
 	int getSize() const;
 	T* getItemWithKey(const string& key);
 	T* deleteWithKey(const string& key);

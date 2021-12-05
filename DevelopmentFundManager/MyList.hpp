@@ -148,21 +148,6 @@ bool MyList<T>::insert(T* newItem) {
 
 }
 
-// Iterator 사용하여 다른 클래스에서 수행하자
-template<typename T>
-void MyList<T>::print() const {
-
-	if (size == 0) return;
-
-	Node<T>* node = dummyHead.getNext();
-	for (int i = 0; i < size; i++) {
-
-		cout << *((*node).getItem()) << endl;
-		node = (*node).getNext();
-
-	}
-}
-
 template<typename T>
 Node<T>* MyList<T>::search(const string& key) {
 
@@ -216,13 +201,16 @@ T* MyList<T>::deleteWithKey(const string& key) {
 }
 
 template<typename T>
-MyList<T>::Iterator MyList<T>::begin() const {
-	return MyList<T>::Iterator(dummyHead.getNext());
+typename MyList<T>::Iterator MyList<T>::begin() const {
+	Iterator iterator(dummyHead.getNext());
+	return iterator;
 }
 
 template<typename T>
-MyList<T>::Iterator MyList<T>::end() const {
-	return MyList<T>::Iterator(dummyHead.getPrev());
+typename MyList<T>::Iterator MyList<T>::end() const {
+	// Iterator iterator(dummyHead.getPrev());
+	Iterator iterator(dummyHead.getPrev()->getNext());
+	return iterator;
 }
 
 
