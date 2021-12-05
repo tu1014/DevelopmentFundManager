@@ -84,3 +84,15 @@ bool Staff::operator==(const string& key) const {
 
 	else return false;
 }
+
+bool Staff::isValid() const {
+
+	if (getName().empty()) return false;
+	if (isValidPhoneNumber(getPhoneNumber()) == false) return false;
+	if (department.empty()) return false;
+	if (staffNumber.empty()) return false;
+	if (getFundAmount() < 0) return false;
+
+	return true;
+
+}

@@ -4,6 +4,8 @@
 #include "Staff.h"
 #include "OrdinaryPerson.h"
 
+bool isDigit(char c);
+
 Person::Person() {
 	fundAmount = 0;
 }
@@ -68,6 +70,37 @@ bool Person::operator>(const Person& person) const {
 	return (fundAmount > person.fundAmount);
 }
 
+bool Person::isValidPhoneNumber(const string& number) const {
+
+	int length = phoneNumber.length();
+
+	if (length != 13) return false;
+
+	for (int i = 0; i < 3; i++)
+		if (isDigit(phoneNumber[i]) == false) return false;
+
+	if (phoneNumber[3] != '-') return false;
+
+	for (int i = 4; i < 8; i++) {
+		if (isDigit(phoneNumber[i]) == false) return false;
+	}
+
+	if (phoneNumber[8] != '-') return false;
+
+	for (int i = 9; i < 13; i++) {
+		if (isDigit(phoneNumber[i]) == false) return false;
+	}
+
+	return true;
+
+}
+
+bool isDigit(char c) {
+
+	return ('0' <= c && c <= '9');
+
+}
+
 Person* Person::stringToPerson(string& line) {
 
 	stringstream ss;
@@ -87,6 +120,12 @@ Person* Person::stringToPerson(string& line) {
 
 	(*person).read(ss);
 
-	return person;
+	if((*person).isValid())
+		return person;
+
+	else {
+		delete person;
+		return NULL;
+	}
 
 }

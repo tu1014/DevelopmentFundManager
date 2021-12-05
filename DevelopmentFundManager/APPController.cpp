@@ -195,6 +195,12 @@ void APPController::registerPerson() {
 
 	cout << endl;
 
+	if (person == NULL) {
+
+		cout << "실패 : 올바르지 않은 입력" << endl;
+		return;
+	}
+
 	if (insert(person)) {
 		cout << "성공 : ";
 		cout << *person << endl << endl;

@@ -119,3 +119,14 @@ bool OrdinaryPerson::operator==(const string& key) const {
 
 	else return false;
 }
+
+bool OrdinaryPerson::isValid() const {
+
+	if (getName().empty()) return false;
+	if (isValidPhoneNumber(getPhoneNumber()) == false) return false;
+	if (depositorCode.empty()) return false;
+	if (getFundAmount() < 0) return false;
+
+	return true;
+
+}

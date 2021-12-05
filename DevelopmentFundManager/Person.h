@@ -30,9 +30,12 @@ public:
 	virtual void read(stringstream& ss) = 0;
 	virtual void write(ofstream& outStream) const = 0;
 	virtual void print() const = 0;
+	virtual bool isValid() const = 0;
+	bool isValidPhoneNumber(const string& number) const;
 
 	virtual bool operator==(const Person& person) const = 0;
 	virtual bool operator==(const string& key) const = 0;
+	
 
 	friend ostream& operator<<(ostream& outputStream, const Person& person);
 

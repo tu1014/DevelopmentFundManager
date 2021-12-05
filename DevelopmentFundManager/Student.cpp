@@ -81,3 +81,15 @@ bool Student::operator==(const string& key) const {
 
 	else return false;
 }
+
+bool Student::isValid() const {
+
+	if (getName().empty()) return false;
+	if (isValidPhoneNumber(getPhoneNumber()) == false) return false;
+	if (department.empty()) return false;
+	if (studentNumber.empty()) return false;
+	if (getFundAmount() < 0) return false;
+
+	return true;
+
+}

@@ -26,6 +26,7 @@ public:
 	void write(ofstream& outStream) const;
 
 	bool isDuplicatedKey(const string& key) const;
+	bool isValid() const;
 
 	bool operator==(const Person& person) const;
 	bool operator==(const string& key) const;
