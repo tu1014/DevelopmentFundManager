@@ -33,7 +33,7 @@ Node<T>::~Node() {
 }
 
 template<typename T>
-T* Node<T>::getItem() { return ptr_item; }
+T* Node<T>::getItem() const { return ptr_item; }
 
 template<typename T>
 void Node<T>::insertNext(Node<T>* node) {
@@ -131,7 +131,7 @@ template<typename T>
 int MyList<T>::getSize() const { return size; }
 
 template<typename T>
-T* MyList<T>::getItemWithKey(const string& key) {
+T* MyList<T>::getItemWithKey(const string& key) const {
 
 	Node<T>* node = search(key);
 	

@@ -23,7 +23,7 @@ public:
 
 	void insertNext(Node* node);
 
-	T* getItem();
+	T* getItem() const;
 
 private:
 
@@ -32,7 +32,6 @@ private:
 	Node* ptr_prev;
 	Node* ptr_next;
 
-	// 굳이 선언해야 할까?
 	friend class MyList<T>;
 
 };
@@ -65,7 +64,7 @@ public:
 
 	bool insert(T* item);
 	int getSize() const;
-	T* getItemWithKey(const string& key);
+	T* getItemWithKey(const string& key) const;
 	T* deleteWithKey(const string& key);
 
 
