@@ -26,13 +26,10 @@ Node<T>::Node(T* element) {
 template<typename T>
 Node<T>::~Node() {
 
-	cout << "Node »èÁ¦" << endl;
-
 	if (ptr_prev != NULL) ptr_prev->ptr_next = ptr_next;
 	if (ptr_next != NULL) ptr_next->ptr_prev = ptr_prev;
 
 	delete ptr_item;
-
 }
 
 template<typename T>
@@ -45,7 +42,6 @@ void Node<T>::insertNext(Node<T>* node) {
 	node->ptr_next = ptr_next;
 	ptr_next->ptr_prev = node;
 	ptr_next = node;
-
 }
 
 
@@ -84,7 +80,7 @@ bool MyList<T>::insert(T* newItem) {
 		size++;
 		dummyHead.insertNext(newNode);
 		return true;
-	}
+	}  
 
 	Node<T>* tmpNode = &dummyHead;
 	Node<T>* insertIndex = &dummyHead;

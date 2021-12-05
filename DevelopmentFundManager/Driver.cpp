@@ -7,14 +7,17 @@ int main(int argc, char* argv[]) {
 
 	if (argc != 2) {
 
-		controller.fileNotFound();
+		cout << "명령형 인자와 함께 실행해주세요." << endl;
 		return 1;
 	}
 
-	// 명령형 인자 넣어주기 예외처리 : 파일 명 다시 입력 while문 돌리기
-	if (controller.readFile(argv[1]) == false) {
+	string fileName = argv[1];
+	while (controller.readFile(fileName) == false) {
 
-		return 1;
+		cout << "파일명을 다시 입력하세요 :";
+		cin >> fileName;
+		cout << endl << endl;
+		
 	}
 
 	while (controller.getRunningState()) {

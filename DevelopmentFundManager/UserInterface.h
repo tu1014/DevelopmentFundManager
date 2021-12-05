@@ -21,7 +21,7 @@ public:
 
 	// 예외처리 필요
 	const int readInt() const;
-	const string readLine() const; // 계속 복사하면 부하??
+	const string readLine() const;
 
 private:
 

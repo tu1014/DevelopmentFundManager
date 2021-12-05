@@ -19,8 +19,7 @@ public:
 
 	const int readCommand() const;
 	void executeCommand(const int command);
-	void fileNotFound();
-	bool readFile(const string fileName);
+	bool readFile(const string& fileName);
 
 
 private:
@@ -33,7 +32,7 @@ private:
 
 	void start();
 	void exit();
-	void printAll();
+	void printAll() const;
 	void registerPerson();
 	void updateFundAmount();
 	void deletePerson();
@@ -41,9 +40,6 @@ private:
 	void save();
 
 	bool insert(Person* person);
-
-
-
 
 };
 

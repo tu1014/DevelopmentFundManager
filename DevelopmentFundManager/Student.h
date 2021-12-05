@@ -25,7 +25,7 @@ public:
 	void read(stringstream& ss);
 	void write(ofstream& outStream) const;
 
-	bool isDuplicatedKey(string key) const;
+	bool isDuplicatedKey(const string& key) const;
 
 	bool operator==(const Person& person) const;
 	bool operator==(const string& key) const;

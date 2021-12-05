@@ -58,7 +58,7 @@ void Student::write(ofstream& outStream) const {
 
 }
 
-bool Student::isDuplicatedKey(string key) const {
+bool Student::isDuplicatedKey(const string& key) const {
 
 	if (key == getPhoneNumber()) return true;
 	if (key == studentNumber) return true;

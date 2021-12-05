@@ -61,7 +61,7 @@ void Staff::write(ofstream& outStream) const {
 
 }
 
-bool Staff::isDuplicatedKey(string key) const {
+bool Staff::isDuplicatedKey(const string& key) const {
 
 	if (key == getPhoneNumber()) return true;
 	if (key == staffNumber) return true;

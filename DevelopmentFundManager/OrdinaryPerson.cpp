@@ -17,10 +17,6 @@ OrdinaryPerson::OrdinaryPerson(
 
 {
 
-	// TODO: static 멤버 사용하여 기탁자 코드 부여
-	// 현재는 임시 코드부여
-	depositorCode = "V0000001";
-
 }
 
 OrdinaryPerson::OrdinaryPerson() : Person() {}
@@ -31,6 +27,27 @@ void OrdinaryPerson::print() const {
 		 << depositorCode << ") "
 		 << getPhoneNumber() << " " << getFundAmount();
 
+}
+
+void OrdinaryPerson::increaseLastCode() {
+
+	int seqNum = stoi(lastCode.substr(SEQ_PART_INDEX));
+	seqNum++;
+
+	int count = 0;
+	int tmpNum = seqNum;
+	while (tmpNum != 0) {
+		tmpNum = tmpNum / 10;
+		++count;
+	}
+
+	string newCode = "V";
+	for (int i = 0; i < SEQ_PART_LENGTH - count; i++) {
+		newCode.append("0");
+	}
+	newCode.append(to_string(seqNum));
+
+	lastCode = newCode;
 }
 
 void OrdinaryPerson::read(stringstream& ss) {
@@ -47,36 +64,18 @@ void OrdinaryPerson::read(stringstream& ss) {
 		ss >> name;
 		setName(name);
 
-		// static 멤버 갱신
-		if (depositorCode > lastCode) lastCode = depositorCode;
+		if (depositorCode > lastCode)
+			lastCode = depositorCode;
 
 	}
 
-	//// 콘솔에서 입력할 때
+	// 콘솔에서 입력할 때
 	else {
 
-		// 메서드로 빼자
-		int seqNum = stoi(lastCode.substr(SEQ_PART_INDEX));
-		seqNum++;
-
-		int count = 0;
-		int tmpNum = seqNum;
-		while (tmpNum != 0) {
-			tmpNum = tmpNum / 10;
-			++count;
-		}
-
-		string newCode = "V";
-		for (int i = 0; i < SEQ_PART_LENGTH - count; i++) {
-			newCode.append("0");
-		}
-		newCode.append(to_string(seqNum));
-
-		lastCode = newCode;
-		depositorCode = newCode;
+		increaseLastCode();
+		depositorCode = lastCode;
 
 		setName(tmp);
-
 	}
 
 	string phoneNumber;
@@ -97,7 +96,7 @@ void OrdinaryPerson::write(ofstream& outStream) const {
 
 }
 
-bool OrdinaryPerson::isDuplicatedKey(string key) const {
+bool OrdinaryPerson::isDuplicatedKey(const string& key) const {
 
 	if (key == getPhoneNumber()) return true;
 	if (key == depositorCode) return true;

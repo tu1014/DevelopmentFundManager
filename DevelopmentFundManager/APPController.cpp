@@ -76,7 +76,9 @@ void APPController::checkQuit() {
 	ui.printQuitUI(fileName);
 	string command = ui.readLine();
 
-	if (command == "C" || command == "c") exit();
+	if (command == "C" || command == "c") {
+		exit();
+	}
 
 	else if (command == "W" || command == "w") {
 		save();
@@ -116,12 +118,7 @@ const bool APPController::getRunningState() const {
 	return isRunning;
 }
 
-void APPController::fileNotFound() {
-
-	ui.printFileNotFoundError();
-}
-
-bool APPController::readFile(const string _fileName) {
+bool APPController::readFile(const string& _fileName) {
 
 	fileName = _fileName;
 
@@ -130,8 +127,8 @@ bool APPController::readFile(const string _fileName) {
 
 	if (inStream.is_open() == false) {
 
-		cout << "    파일을 열 수 없습니다." << endl;
-		// inStream.close();
+		ui.printFileNotFoundError();
+		inStream.close();
 		return false;
 	}
 
@@ -149,10 +146,9 @@ bool APPController::readFile(const string _fileName) {
 
 	inStream.close();
 	return true;
-	// 파일 네임 다시 받기 예외 처리
 }
 
-void APPController::printAll() {
+void APPController::printAll() const {
 
 	cout << endl;
 	int size = personList.getSize();
@@ -215,11 +211,17 @@ void APPController::updateFundAmount() {
 	ui.printFundAmountUI();
 	int amount = ui.readInt();
 
+	if (amount < 0) {
+		cout << "음수를 입력할 수 없습니다" << endl << endl;
+		return;
+	}
+
 	Person* target = personList.deleteWithKey(key);
 
 	cout << endl;
 	if (target == NULL) ui.printPersonNotFoundError();
 	else {
+
 		target->setFundAmount(target->getFundAmount() + amount);
 		cout << "<변경> " << *target << endl;
 		insert(target);
