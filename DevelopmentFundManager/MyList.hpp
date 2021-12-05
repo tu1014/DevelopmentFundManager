@@ -60,7 +60,6 @@ MyList<T>::~MyList() {
 	for (int i = 0; i < size; i++) {
 
 		Node<T>* node = dummyHead.ptr_next;
-		cout << *((*node).getItem()) << endl;
 		delete node;
 	}
 }

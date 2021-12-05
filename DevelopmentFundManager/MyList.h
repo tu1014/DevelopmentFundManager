@@ -74,9 +74,6 @@ private:
 	int size;
 
 	Node<T>* search(const string& key);
-	// Node<T>* targetNode;
-
-
 
 };
 

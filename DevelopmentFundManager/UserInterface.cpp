@@ -58,9 +58,14 @@ void UserInterface::printFileNotFoundError() const {
 // 예외처리 필요
 const int UserInterface::readInt() const {
 
-	int i;
+	int i = 0;
 	cin >> i;
 	cout << endl;
+
+	if (cin.fail()) {
+		cin.clear();
+		cin.ignore();
+	}
 
 	return i;
 }
