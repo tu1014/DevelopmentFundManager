@@ -94,8 +94,14 @@ void APPController::printAll() {
 
 		cout << "<후원자 전체 조회> : 총 ";
 		cout << size << "명이 후원하였습니다." << endl << endl;
-		personList.print();
+		// personList.print();
 
+		MyList<Person>::Iterator iterator = personList.begin();
+		MyList<Person>::Iterator end = personList.end();
+
+		for (iterator; iterator != end; iterator++) {
+			cout << *iterator << endl;
+		}
 	}
 
 	cout << endl;

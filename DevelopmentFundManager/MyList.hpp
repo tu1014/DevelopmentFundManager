@@ -215,9 +215,42 @@ T* MyList<T>::deleteWithKey(const string& key) {
 
 }
 
+template<typename T>
+MyList<T>::Iterator MyList<T>::begin() const {
+	return MyList<T>::Iterator(dummyHead.getNext());
+}
+
+template<typename T>
+MyList<T>::Iterator MyList<T>::end() const {
+	return MyList<T>::Iterator(dummyHead.getPrev());
+}
+
+
 ////////////////////////////////////
 
 template<typename T>
-MyList<T>::Iterator<T> MyList<T>::Iterator() {
+MyList<T>::Iterator::Iterator(Node<T>* node) {
+	pointer = node;
+}
 
+template<typename T>
+const T& MyList<T>::Iterator::operator*() {
+	return *((*pointer).getItem());
+}
+
+template<typename T>
+ostream& operator<<(ostream& outputStream, const Iterator<T>& iterator) {
+
+	outputStream << *((*(iterator.pointer)).getItem());
+	return outputStream;
+}
+
+template<typename T>
+void MyList<T>::Iterator::operator++() {
+	pointer = pointer->getNext();
+}
+
+template<typename T>
+bool MyList<T>::Iterator::operator!=(const Iterator& iterator) const {
+	return (pointer != iterator.pointer);
 }

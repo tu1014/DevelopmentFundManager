@@ -48,17 +48,33 @@ class MyList
 
 public:
 
+	class Iterator {
+
+	public:
+
+		Iterator(Node<T>* node);
+		const T& operator*();
+		friend ostream& operator<<(ostream& outputStream, const Iterator& iterator);
+		bool operator!=(const Iterator& iterator) const;
+		void operator++();
+
+	private:
+
+		Node<T>* pointer;
+
+
+	};
+
 	MyList();
 	~MyList();
-	Iterator<T> begin() const;
-	Iterator<T> end() const;
+	Iterator begin() const;
+	Iterator end() const;
 
 	bool insert(T* item);
 	void print() const;
 	int getSize() const;
 	T* getItemWithKey(const string& key);
 	T* deleteWithKey(const string& key);
-
 
 
 private:
@@ -68,22 +84,6 @@ private:
 
 	Node<T>* search(const string& key);
 	// Node<T>* targetNode;
-
-	class Iterator<T> {
-
-	public:
-
-		Iterator(Node* node);
-		const T& operator*();
-		friend ostream& operator<<(ostream& outputStream, const Iterator& iterator);
-		void operator++();
-
-	private:
-
-		Node<T>* pointer;
-
-
-	};
 
 
 
