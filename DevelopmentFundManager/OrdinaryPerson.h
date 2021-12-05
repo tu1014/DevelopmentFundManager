@@ -17,6 +17,7 @@ public:
 
 	void print() const;
 	void read(stringstream& ss);
+	void write(ofstream& outStream) const;
 
 	// set lastCode
 	// get lastCode ÇÊ¿ä

@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+/*==============Node===================*/
+
 template<typename T>
 Node<T>::Node() {
 
@@ -26,35 +28,10 @@ Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
 
-	if(ptr_prev != NULL) (*ptr_prev).setNext(ptr_next);
-	if (ptr_next != NULL) (*ptr_next).setPrev(ptr_prev);
+	if (ptr_prev != NULL) ptr_prev->ptr_next = ptr_next;
+	if (ptr_next != NULL) ptr_next->ptr_prev = ptr_prev;
 
 	delete ptr_item;
-
-	// prev, next도 지워야 할까?
-	// 아닌거같은데
-	// delete prev;
-	// delete next;
-
-}
-
-template<typename T>
-Node<T>* Node<T>::getNext() const { return ptr_next; }
-
-template<typename T>
-Node<T>* Node<T>::getPrev() const { return ptr_prev; }
-
-template<typename T>
-void Node<T>::setNext(Node<T>* node) {
-
-	ptr_next = node;
-
-}
-
-template<typename T>
-void Node<T>::setPrev(Node<T>* node) {
-
-	ptr_prev = node;
 
 }
 
@@ -64,16 +41,15 @@ T* Node<T>::getItem() { return ptr_item; }
 template<typename T>
 void Node<T>::insertNext(Node<T>* node) {
 
-	// 굳이 get set 쓸 필요 없이 멤버를 바꿔주자
-	(*node).setPrev(this);
-	(*node).setNext(ptr_next);
-	(*ptr_next).setPrev(node);
+	node->ptr_prev = this;
+	node->ptr_next = ptr_next;
+	ptr_next->ptr_prev = node;
 	ptr_next = node;
 
 }
 
 
-////////////////////////////////////////////////////////////
+/*==============MyList===================*/
 
 template<typename T>
 MyList<T>::MyList() {
@@ -82,26 +58,21 @@ MyList<T>::MyList() {
 
 }
 
-// 제거자 정의 필요
 template<typename T>
 MyList<T>::~MyList() {
 
-	cout << "MyList 제거자 호출" << endl;
 	for (int i = 0; i < size; i++) {
 
-		Node<T>* node = dummyHead.getNext();
+		Node<T>* node = dummyHead.ptr_next;
 		cout << *((*node).getItem()) << endl;
 		delete node;
-
 	}
-
 }
 
 template<typename T>
 bool MyList<T>::insert(T* newItem) {
 
 	// 비어 있으면 맨 앞에 삽입
-
 	// 처음부터 끝까지 돌면서 중복 체크
 	// 루프 돌면서 삽입해야 할 인덱스 기억
 	// 루프 돌다 중복 발견하면 false 리턴
@@ -112,9 +83,7 @@ bool MyList<T>::insert(T* newItem) {
 
 		size++;
 		dummyHead.insertNext(newNode);
-		// cout << "삽입 성공" << endl;
 		return true;
-
 	}
 
 	Node<T>* tmpNode = &dummyHead;
@@ -122,26 +91,21 @@ bool MyList<T>::insert(T* newItem) {
 	T* item;
 	for (int i = 0; i < size; i++) {
 
-		tmpNode = (*tmpNode).getNext();
+		tmpNode = (*tmpNode).ptr_next;
 		item = (*tmpNode).getItem();
 
 		if (*newItem == *item) {
 
-			// cout << "중복 발생" << endl;
 			(*newNode).ptr_item = NULL;
 			delete newNode;
-			// new Item은 어디서 지우나?
 			return false;
-
 		}
 
 		if ((*item) > (*newItem)) insertIndex = tmpNode;
-
 	}
 
 	(*insertIndex).insertNext(newNode);
 
-	// cout << "삽입 성공" << endl;
 	size++;
 
 	return true;
@@ -155,19 +119,16 @@ Node<T>* MyList<T>::search(const string& key) {
 	T* item;
 	for (int i = 0; i < size; i++) {
 
-		tmpNode = (*tmpNode).getNext();
+		tmpNode = (*tmpNode).ptr_next;
 		item = (*tmpNode).getItem();
 
 		if (*item == key) {
 
-			// cout << "중복 발생" << endl;
 			return tmpNode;
-
 		}
 	}
 
 	return NULL;
-
 }
 
 template<typename T>
@@ -202,19 +163,18 @@ T* MyList<T>::deleteWithKey(const string& key) {
 
 template<typename T>
 typename MyList<T>::Iterator MyList<T>::begin() const {
-	Iterator iterator(dummyHead.getNext());
+	Iterator iterator(dummyHead.ptr_next);
 	return iterator;
 }
 
 template<typename T>
 typename MyList<T>::Iterator MyList<T>::end() const {
-	// Iterator iterator(dummyHead.getPrev());
-	Iterator iterator(dummyHead.getPrev()->getNext());
+	Iterator iterator(dummyHead.ptr_prev->ptr_next);
 	return iterator;
 }
 
 
-////////////////////////////////////
+/*==============Iterator===================*/
 
 template<typename T>
 MyList<T>::Iterator::Iterator(Node<T>* node) {
@@ -235,7 +195,7 @@ ostream& operator<<(ostream& outputStream, const Iterator<T>& iterator) {
 
 template<typename T>
 void MyList<T>::Iterator::operator++() {
-	pointer = pointer->getNext();
+	pointer = pointer->ptr_next;
 }
 
 template<typename T>

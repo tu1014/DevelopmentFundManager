@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 class Person
@@ -28,6 +29,7 @@ public:
 	virtual bool isDuplicatedKey(string key) const = 0;
 
 	virtual void read(stringstream& ss) = 0;
+	virtual void write(ofstream& outStream) const = 0;
 	virtual void print() const = 0;
 
 	virtual bool operator==(const Person& person) const = 0;

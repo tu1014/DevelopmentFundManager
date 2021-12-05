@@ -51,6 +51,16 @@ void Staff::read(stringstream& ss) {
 
 }
 
+void Staff::write(ofstream& outStream) const {
+
+	outStream << "±³Á÷¿ø " << staffNumber << " ";
+	outStream << getName() << " " << department << " ";
+	outStream << extensionNumber << " ";
+	outStream << getPhoneNumber() << " ";
+	outStream << getFundAmount() << "\n";
+
+}
+
 bool Staff::isDuplicatedKey(string key) const {
 
 	if (key == getPhoneNumber()) return true;

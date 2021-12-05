@@ -1,5 +1,6 @@
 #include "OrdinaryPerson.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 const int OrdinaryPerson::CODE_PART_INDEX = 0;
@@ -54,6 +55,7 @@ void OrdinaryPerson::read(stringstream& ss) {
 	//// 콘솔에서 입력할 때
 	else {
 
+		// 메서드로 빼자
 		int seqNum = stoi(lastCode.substr(SEQ_PART_INDEX));
 		seqNum++;
 
@@ -84,6 +86,14 @@ void OrdinaryPerson::read(stringstream& ss) {
 	int fundAmount;
 	ss >> fundAmount;
 	setFundAmount(fundAmount);
+
+}
+
+void OrdinaryPerson::write(ofstream& outStream) const {
+
+	outStream << "일반 " << depositorCode << " ";
+	outStream << getName() << " " << getPhoneNumber() << " ";
+	outStream << getFundAmount() << "\n";
 
 }
 

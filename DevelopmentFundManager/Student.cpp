@@ -49,6 +49,15 @@ void Student::read(stringstream& ss) {
 
 };
 
+void Student::write(ofstream& outStream) const {
+
+	outStream << "ÇÐ»ý " << studentNumber << " ";
+	outStream << getName() << " " << department << " ";
+	outStream << getPhoneNumber() << " ";
+	outStream << getFundAmount() << "\n";
+
+}
+
 bool Student::isDuplicatedKey(string key) const {
 
 	if (key == getPhoneNumber()) return true;

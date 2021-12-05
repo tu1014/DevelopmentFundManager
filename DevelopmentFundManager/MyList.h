@@ -21,11 +21,6 @@ public:
 	Node();
 	~Node();
 
-	Node* getNext() const;
-	Node* getPrev() const;
-	void setNext(Node* nextNode);
-	void setPrev(Node* prevNode);
-
 	void insertNext(Node* node);
 
 	T* getItem();
