@@ -83,6 +83,20 @@ MyList<T>::MyList() {
 }
 
 // 제거자 정의 필요
+template<typename T>
+MyList<T>::~MyList() {
+
+	cout << "MyList 제거자 호출" << endl;
+	for (int i = 0; i < size; i++) {
+
+		Node<T>* node = dummyHead.getNext();
+		cout << *((*node).getItem()) << endl;
+		//node = (*node).getNext();
+		delete node;
+
+	}
+
+}
 
 template<typename T>
 bool MyList<T>::insert(T* newItem) {

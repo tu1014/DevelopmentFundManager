@@ -4,7 +4,9 @@
 #include "Staff.h"
 #include "OrdinaryPerson.h"
 
-Person::Person() {}
+Person::Person() {
+	fundAmount = 0;
+}
 
 Person::~Person() {
 
