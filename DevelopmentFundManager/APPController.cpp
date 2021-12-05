@@ -19,6 +19,26 @@ APPController::APPController() {
 	start();
 }
 
+void APPController::save() {
+}
+
+void APPController::checkQuit() {
+	ui.printQuitUI(fileName);
+	string command = ui.readLine();
+
+	if (command == "C" || command == "c") exit();
+
+	else if (command == "W" || command == "w") {
+		save();
+		exit();
+	}
+
+	else {
+		ui.printInvalidInputMessage();
+	}
+
+}
+
 void APPController::exit() { 
 	
 	isRunning = false;
@@ -69,14 +89,9 @@ bool APPController::readFile(const string _fileName) {
 	while (inStream.eof() == false) {
 
 		getline(inStream, line);
-		// cout << line << endl;
-
 		person = Person::stringToPerson(line);
-
 		insert(person);
-
 		person = NULL;
-
 	}
 
 	return true;
@@ -210,7 +225,7 @@ void APPController::executeCommand(const int command) {
 
 	case QUIT:
 
-		exit();
+		checkQuit();
 		break;
 
 	default:

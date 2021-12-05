@@ -38,6 +38,7 @@ private:
 	void updateFundAmount();
 	void deletePerson();
 	void checkQuit();
+	void save();
 
 	bool insert(Person* person);
 

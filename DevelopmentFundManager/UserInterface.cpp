@@ -68,7 +68,6 @@ const int UserInterface::readInt() const {
 const string UserInterface::readLine() const {
 
 	string line;
-	// cin.getline
 	cin.ignore();
 	getline(cin, line);
 	cout << endl;
