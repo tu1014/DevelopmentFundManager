@@ -140,6 +140,7 @@ T* MyList<T>::getItemWithKey(const string& key) const {
 
 }
 
+// Node는 delete, K는 리턴
 template<typename T>
 T* MyList<T>::deleteWithKey(const string& key) {
 

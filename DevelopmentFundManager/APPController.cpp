@@ -211,8 +211,8 @@ void APPController::updateFundAmount() {
 	ui.printFundAmountUI();
 	int amount = ui.readInt();
 
-	if (amount < 0) {
-		cout << "음수를 입력할 수 없습니다" << endl << endl;
+	if (amount <= 0) {
+		cout << "잘못된 금액 입력" << endl << endl;
 		return;
 	}
 

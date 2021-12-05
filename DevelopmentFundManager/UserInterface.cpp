@@ -55,7 +55,6 @@ void UserInterface::printFileNotFoundError() const {
 	cout << "File Not Found Error" << endl;
 }
 
-// 예외처리 필요
 const int UserInterface::readInt() const {
 
 	int i = 0;
