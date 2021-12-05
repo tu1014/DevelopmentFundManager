@@ -91,7 +91,6 @@ MyList<T>::~MyList() {
 
 		Node<T>* node = dummyHead.getNext();
 		cout << *((*node).getItem()) << endl;
-		//node = (*node).getNext();
 		delete node;
 
 	}
@@ -213,5 +212,12 @@ T* MyList<T>::deleteWithKey(const string& key) {
 	size--;
 
 	return target;
+
+}
+
+////////////////////////////////////
+
+template<typename T>
+MyList<T>::Iterator<T> MyList<T>::Iterator() {
 
 }

@@ -10,6 +10,9 @@ template<typename T>
 class Node;
 
 template<typename T>
+class Iterator;
+
+template<typename T>
 class Node {
 
 public:
@@ -47,6 +50,8 @@ public:
 
 	MyList();
 	~MyList();
+	Iterator<T> begin() const;
+	Iterator<T> end() const;
 
 	bool insert(T* item);
 	void print() const;
@@ -63,6 +68,22 @@ private:
 
 	Node<T>* search(const string& key);
 	// Node<T>* targetNode;
+
+	class Iterator<T> {
+
+	public:
+
+		Iterator(Node* node);
+		const T& operator*();
+		friend ostream& operator<<(ostream& outputStream, const Iterator& iterator);
+		void operator++();
+
+	private:
+
+		Node<T>* pointer;
+
+
+	};
 
 
 
