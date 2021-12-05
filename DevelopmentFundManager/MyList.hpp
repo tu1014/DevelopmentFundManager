@@ -26,10 +26,11 @@ Node<T>::~Node() {
 
 	cout << "Node 삭제" << endl;
 
-	(*ptr_prev).setNext(ptr_next);
-	(*ptr_next).setPrev(ptr_prev);
+	if(ptr_prev != NULL) (*ptr_prev).setNext(ptr_next);
+	if (ptr_next != NULL) (*ptr_next).setPrev(ptr_prev);
 
 	delete ptr_item;
+
 	// prev, next도 지워야 할까?
 	// 아닌거같은데
 	// delete prev;
@@ -63,6 +64,7 @@ T* Node<T>::getItem() { return ptr_item; }
 template<typename T>
 void Node<T>::insertNext(Node<T>* node) {
 
+	// 굳이 get set 쓸 필요 없이 멤버를 바꿔주자
 	(*node).setPrev(this);
 	(*node).setNext(ptr_next);
 	(*ptr_next).setPrev(node);
@@ -103,7 +105,7 @@ bool MyList<T>::insert(T* newItem) {
 	}
 
 	Node<T>* tmpNode = &dummyHead;
-	Node<T>* insertIndex = dummyHead.getNext();
+	Node<T>* insertIndex = &dummyHead;
 	T* item;
 	for (int i = 0; i < size; i++) {
 

@@ -1,5 +1,11 @@
 #include "APPController.h"
 #include "UserInterface.h"
+#include <fstream>
+#include <sstream>
+#include "Student.h"
+#include "Person.h"
+#include "OrdinaryPerson.h"
+#include "Staff.h"
 
 // command
 const int APPController::PRINT_ALL = 1;
@@ -43,26 +49,75 @@ void APPController::fileNotFound() {
 	ui.printFileNotFoundError();
 }
 
-bool APPController::readFile(const string fileName) {
+bool APPController::readFile(const string _fileName) {
 
-	return dataManipulator.readFile(fileName);
+	fileName = _fileName;
+
+	ifstream inStream;
+	inStream.open(fileName);
+
+	if (inStream.is_open() == false) {
+
+		cout << "    파일을 열 수 없습니다." << endl;
+		return false;
+	}
+
+	string line;
+
+	Person* person;
+
+	while (inStream.eof() == false) {
+
+		getline(inStream, line);
+		// cout << line << endl;
+
+		person = Person::stringToPerson(line);
+
+		insert(person);
+
+		person = NULL;
+
+	}
+
+	return true;
 	// 파일 네임 다시 받기 예외 처리
 }
 
 void APPController::printAll() {
 
 	cout << endl;
+	int size = personList.getSize();
 
-	if (dataManipulator.isEmpty()) cout << "No Data";
+	if(size == 0) cout << "No Data";
 
 	else {
+
 		cout << "<후원자 전체 조회> : 총 ";
-		cout << dataManipulator.getSize() << "명이 후원하였습니다." << endl << endl;
-		dataManipulator.printAll();
+		cout << size << "명이 후원하였습니다." << endl << endl;
+		personList.print();
+
 	}
 
 	cout << endl;
-	
+}
+
+bool APPController::insert(Person* person) {
+
+	if (person == NULL) {
+
+		// cout << "잘못된 레코드" << endl;
+		// 잘못된 입력 데이터 (형식에 맞지 않는 데이터?)
+		return false;
+
+	}
+
+	if (personList.insert(person) == false) {
+		// 중복 발생
+		delete person;
+		return false;
+	}
+
+	return true;
 
 }
 
@@ -75,7 +130,7 @@ void APPController::registerPerson() {
 
 	cout << endl;
 
-	if (dataManipulator.insert(person)) {
+	if (insert(person)) {
 		cout << "성공 : ";
 		cout << *person << endl << endl;
 	}
@@ -92,11 +147,15 @@ void APPController::updateFundAmount() {
 	int amount = ui.readInt();
 
 	// 삭제 후 재삽입?
-	Person* target = dataManipulator.updateFundAmount(key, amount);
+	Person* target = personList.deleteWithKey(key);
 
 	cout << endl;
 	if (target == NULL) ui.printPersonNotFoundError();
-	else cout << "<변경> " << *target << endl;
+	else {
+		target->setFundAmount(target->getFundAmount() + amount);
+		cout << "<변경> " << *target << endl;
+		insert(target);
+	}
 
 	cout << endl;
 
@@ -107,7 +166,7 @@ void APPController::deletePerson() {
 	ui.printDeleteUI();
 	string key = ui.readLine();
 
-	Person* target = dataManipulator.deletePerson(key);
+	Person* target = personList.deleteWithKey(key);
 
 	if (target == NULL) ui.printPersonNotFoundError();
 	else {

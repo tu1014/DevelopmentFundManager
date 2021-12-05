@@ -1,7 +1,7 @@
 #pragma once
 #include "UserInterface.h"
-#include "MyList.h"
-#include "DataManipulator.h"
+#include "MyList.hpp"
+#include "Person.h"
 
 class APPController
 {
@@ -26,7 +26,8 @@ public:
 private:
 
 	UserInterface ui;
-	DataManipulator dataManipulator;
+	MyList<Person> personList;
+	string fileName;
 
 	bool isRunning;
 
@@ -37,6 +38,8 @@ private:
 	void updateFundAmount();
 	void deletePerson();
 	void checkQuit();
+
+	bool insert(Person* person);
 
 
 

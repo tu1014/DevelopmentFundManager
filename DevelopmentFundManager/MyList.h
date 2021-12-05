@@ -46,7 +46,7 @@ class MyList
 public:
 
 	MyList();
-	// ~MyList();
+	~MyList();
 
 	bool insert(T* item);
 	void print() const;
