@@ -104,6 +104,7 @@ void APPController::save() {
 	}
 
 	cout << "저장을 완료했습니다" << endl << endl;
+	outStream.close();
 
 }
 
