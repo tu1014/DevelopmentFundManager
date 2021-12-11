@@ -9,6 +9,7 @@ class Staff : public Person
 public:
 
 	Staff();
+	~Staff();
 
 	Staff(
 		string name,

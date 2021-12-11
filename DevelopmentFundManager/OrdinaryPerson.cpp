@@ -19,6 +19,10 @@ OrdinaryPerson::OrdinaryPerson(
 
 }
 
+OrdinaryPerson::~OrdinaryPerson() {
+	cout << "일반인 삭제" << endl;
+}
+
 OrdinaryPerson::OrdinaryPerson() : Person() {}
 
 void OrdinaryPerson::print() const {

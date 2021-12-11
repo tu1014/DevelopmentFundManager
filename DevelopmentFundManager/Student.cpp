@@ -18,7 +18,9 @@ Student::Student(
 
 Student::Student() : Person() {}
 
-Student::~Student() {}
+Student::~Student() {
+	cout << "Student »èÁ¦" << endl;
+}
 
 void Student::print() const {
 

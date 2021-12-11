@@ -19,6 +19,9 @@ Staff::Staff(
 }
 
 Staff::Staff() : Person() {}
+Staff::~Staff() {
+	cout << "Staff »èÁ¦" << endl;
+}
 
 void Staff::print() const {
 

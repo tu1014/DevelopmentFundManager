@@ -11,7 +11,7 @@ Person::Person() {
 }
 
 Person::~Person() {
-
+	cout << "person »èÁ¦" << endl;
 }
 
 Person::Person(string _name, string _phoneNumber, int _fundAmount) {

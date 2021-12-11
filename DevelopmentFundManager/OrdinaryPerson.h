@@ -14,6 +14,7 @@ public:
 		string phoneNumber,
 		int fundAmount
 	);
+	~OrdinaryPerson();
 
 	void print() const;
 	void read(stringstream& ss);
